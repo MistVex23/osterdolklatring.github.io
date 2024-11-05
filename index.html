@@ -4,95 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Østerdølenes Klatreklubb Oslo</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nav {
+            background-color: #2c5282;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #f7fafc;
+            border-radius: 8px;
+        }
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+        input, select {
+            padding: 0.5rem;
+            width: 100%;
+        }
+        button {
+            background-color: #2c5282;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Navigasjon -->
-    <nav class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Østerdølenes Klatreklubb</h1>
-            <div class="space-x-4">
-                <a href="#" class="hover:text-gray-200">Hjem</a>
-                <a href="#om-oss" class="hover:text-gray-200">Om oss</a>
-                <a href="#medlemskap" class="hover:text-gray-200">Bli medlem</a>
-                <a href="#kontakt" class="hover:text-gray-200">Kontakt</a>
-            </div>
+<body>
+    <div class="header">
+        <h1>Østerdølenes Klatreklubb</h1>
+        <p>For østerdøler som vil klatre i Oslo</p>
+    </div>
+
+    <div class="nav">
+        <a href="#om-oss">Om oss</a>
+        <a href="#medlemskap">Bli medlem</a>
+        <a href="#kontakt">Kontakt</a>
+    </div>
+
+    <div class="container">
+        <div class="section" id="om-oss">
+            <h2>Om oss</h2>
+            <p>Vi er en gruppe østerdøler som bor i Oslo og elsker å klatre. 
+            Klubben vår er et sosialt møtepunkt for alle med tilknytning til Østerdalen 
+            som er interessert i klatring, uansett nivå.</p>
         </div>
-    </nav>
 
-    <!-- Hero-seksjon -->
-    <header class="relative">
-        <img src="/api/placeholder/1200/400" alt="Klatring" class="w-full h-96 object-cover"/>
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div class="text-center text-white">
-                <h2 class="text-4xl font-bold mb-4">Velkommen til Østerdølenes Klatreklubb</h2>
-                <p class="text-xl">For østerdøler som vil klatre i Oslo</p>
-            </div>
+        <div class="section" id="medlemskap">
+            <h2>Bli medlem</h2>
+            <form>
+                <div>
+                    <label for="navn">Fullt navn:</label>
+                    <input type="text" id="navn" required>
+                </div>
+                <div>
+                    <label for="epost">E-post:</label>
+                    <input type="email" id="epost" required>
+                </div>
+                <div>
+                    <label for="telefon">Telefon:</label>
+                    <input type="tel" id="telefon" required>
+                </div>
+                <div>
+                    <label for="medlemstype">Medlemstype:</label>
+                    <select id="medlemstype">
+                        <option>Ordinært medlemskap (kr 500/år)</option>
+                        <option>Student (kr 300/år)</option>
+                        <option>Junior (under 18 år) (kr 200/år)</option>
+                    </select>
+                </div>
+                <button type="submit">Bli medlem</button>
+            </form>
         </div>
-    </header>
 
-    <!-- Hovedinnhold -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Om oss -->
-        <section id="om-oss" class="mb-12">
-            <h2 class="text-3xl font-bold mb-4">Om oss</h2>
-            <p class="text-gray-700">
-                Vi er en gruppe østerdøler som bor i Oslo og elsker å klatre. 
-                Klubben vår er et sosialt møtepunkt for alle med tilknytning til Østerdalen 
-                som er interessert i klatring, uansett nivå.
-            </p>
-        </section>
-
-        <!-- Medlemskap -->
-        <section id="medlemskap" class="mb-12">
-            <h2 class="text-3xl font-bold mb-4">Bli medlem</h2>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <form class="space-y-4">
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="navn">Fullt navn</label>
-                        <input type="text" id="navn" class="w-full p-2 border rounded" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="epost">E-post</label>
-                        <input type="email" id="epost" class="w-full p-2 border rounded" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="telefon">Telefon</label>
-                        <input type="tel" id="telefon" class="w-full p-2 border rounded" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Medlemstype</label>
-                        <select class="w-full p-2 border rounded">
-                            <option>Ordinært medlemskap (kr 500/år)</option>
-                            <option>Student (kr 300/år)</option>
-                            <option>Junior (under 18 år) (kr 200/år)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-                        Bli medlem
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Kontakt -->
-        <section id="kontakt" class="mb-12">
-            <h2 class="text-3xl font-bold mb-4">Kontakt oss</h2>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <p class="mb-4">
-                    <strong>E-post:</strong> post@osterdolklatring.no<br>
-                    <strong>Telefon:</strong> 123 45 678
-                </p>
-                <p>Følg oss gjerne på sosiale medier for oppdateringer om arrangementer og aktiviteter!</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Østerdølenes Klatreklubb Oslo</p>
+        <div class="section" id="kontakt">
+            <h2>Kontakt oss</h2>
+            <p><strong>E-post:</strong> post@osterdolklatring.no<br>
+            <strong>Telefon:</strong> 123 45 678</p>
         </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Østerdølenes Klatreklubb Oslo</p>
     </footer>
 </body>
 </html>
