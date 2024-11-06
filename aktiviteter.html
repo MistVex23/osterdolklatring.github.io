@@ -1,13 +1,134 @@
 <!DOCTYPE html>
 <html lang="no">
-<!-- [Behold hele head-seksjonen med all CSS uendret] -->
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Aktiviteter - Østerdølenes Klatreklubb Oslo</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <style>
-       /* [Behold all original CSS uendret] */
+       /* Base styles fra om-oss.html */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background-color: #f8f9fa;
+       }
+
+       .nav {
+           background-color: #1a365d;
+           color: white;
+           position: fixed;
+           width: 100%;
+           top: 0;
+           z-index: 1000;
+       }
+
+       .nav-container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 1rem;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+
+       .nav a {
+           color: white;
+           text-decoration: none;
+           margin: 0 1rem;
+           transition: opacity 0.3s;
+       }
+
+       .nav a:hover {
+           opacity: 0.8;
+       }
+
+       .main-content {
+           max-width: 1200px;
+           margin: 100px auto 40px;
+           padding: 0 20px;
+       }
+
+       /* Aktivitetsspesifikke stiler */
+       .activity-card {
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           margin-bottom: 2rem;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+
+       .activity-image {
+           width: 100%;
+           height: 300px;
+           object-fit: cover;
+       }
+
+       .activity-content {
+           padding: 2rem;
+       }
+
+       .activity-meta {
+           display: flex;
+           gap: 2rem;
+           margin-bottom: 1rem;
+           color: #4a5568;
+       }
+
+       .tag {
+           display: inline-block;
+           padding: 0.25rem 0.75rem;
+           border-radius: 15px;
+           font-size: 0.875rem;
+           margin-right: 0.5rem;
+       }
+
+       .tag.fast {
+           background: #9ae6b4;
+           color: #22543d;
+       }
+
+       .tag.tur {
+           background: #90cdf4;
+           color: #2c5282;
+       }
+
+       .spond-button {
+           display: inline-flex;
+           align-items: center;
+           gap: 0.5rem;
+           background: #4CAF50;
+           color: white;
+           padding: 0.75rem 1.5rem;
+           border-radius: 4px;
+           text-decoration: none;
+           margin-top: 1rem;
+           transition: background 0.3s;
+       }
+
+       .spond-button:hover {
+           background: #45a049;
+       }
+
+       .grid-2 {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 2rem;
+           margin-top: 2rem;
+       }
+
+       @media (max-width: 768px) {
+           .activity-meta {
+               flex-direction: column;
+               gap: 0.5rem;
+           }
+       }
    </style>
 </head>
 <body>
@@ -48,8 +169,9 @@
        <div class="grid-2">
            <!-- Badstu og øl -->
            <div class="activity-card">
-               <img src="/api/placeholder/600/300" alt="Badstu og øl" class="activity-image">
+               <img src="/api/placeholder/600/300" alt="Sosialt" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Sosialt</span>
                    <h3>Badstu og øl</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> Desember 2024</span>
@@ -65,8 +187,9 @@
 
            <!-- Julebord og nyttårsbord -->
            <div class="activity-card">
-               <img src="/api/placeholder/600/300" alt="Julebord og nyttårsbord" class="activity-image">
+               <img src="/api/placeholder/600/300" alt="Jule og nyttårsbord" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Sosialt</span>
                    <h3>Julebord og nyttårsbord</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> Januar 2025</span>
@@ -84,6 +207,7 @@
            <div class="activity-card">
                <img src="/api/placeholder/600/300" alt="Topptur" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Topptur</span>
                    <h3>Toppturhelg i Jotunheimen</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> Mars 2025</span>
@@ -101,6 +225,7 @@
            <div class="activity-card">
                <img src="/api/placeholder/600/300" alt="Klatring" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Klatring</span>
                    <h3>Flaggsvae</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> April 2025</span>
@@ -118,6 +243,7 @@
            <div class="activity-card">
                <img src="/api/placeholder/600/300" alt="Klatring" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Klatring</span>
                    <h3>Jarlberget</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> Juni 2025</span>
@@ -135,6 +261,7 @@
            <div class="activity-card">
                <img src="/api/placeholder/600/300" alt="Klatring" class="activity-image">
                <div class="activity-content">
+                   <span class="tag tur">Klatring</span>
                    <h3>Flatanger</h3>
                    <div class="activity-meta">
                        <span><i class="far fa-calendar"></i> August 2025</span>
