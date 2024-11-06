@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medlemskap - Østerdølenes Klatreklubb Oslo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Behold base styles */
+        /* ... (samme som tidligere) ... */
+
+        .membership-container {
+            max-width: 600px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .membership-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .vipps-button {
+            background: #ff5b24;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .vipps-button:hover {
+            background: #e64d1c;
+        }
+
+        .success-message {
+            background: #48bb78;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .membership-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .membership-type {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ØK Oslo</a>
+            <div class="nav-links">
+                <a href="om-oss.html">Om oss</a>
+                <a href="aktiviteter.html">Aktiviteter</a>
+                <a href="galleri.html">Galleri</a>
+                <a href="medlemskap.html">Medlemskap</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="membership-container">
+        <h1>Bli medlem</h1>
+
+        <div class="membership-card">
+            <div class="membership-types">
+                <div class="membership-type">
+                    <h3>Ordinært</h3>
+                    <div class="price">500 kr/år</div>
+                    <p>For alle over 18 år</p>
+                </div>
+                <div class="membership-type">
+                    <h3>Student</h3>
+                    <div class="price">300 kr/år</div>
+                    <p>Med gyldig studentbevis</p>
+                </div>
+                <div class="membership-type">
+                    <h3>Junior</h3>
+                    <div class="price">200 kr/år</div>
+                    <p>Under 18 år</p>
+                </div>
+            </div>
+
+            <div class="success-message" id="success-message">
+                Takk for din påmelding! Følg instruksjonene for Vipps-betaling.
+            </div>
+
+            <form id="membership-form">
+                <div class="form-group">
+                    <label for="navn">Fullt navn</label>
+                    <input type="text" id="navn" required>
+                </div>
+                <div class="form-group">
+                    <label for="epost">E-post</label>
+                    <input type="email" id="epost" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" required>
+                </div>
+                <div class="form-group">
+                    <label for="medlemstype">Medlemstype</label>
+                    <select id="medlemstype">
+                        <option value="500">Ordinært medlemskap - 500 kr/år</option>
+                        <option value="300">Student - 300 kr/år</option>
+                        <option value="200">Junior - 200 kr/år</option>
+                    </select>
+                </div>
+                <button type="submit" class="vipps-button">
+                    <i class="fas fa-mobile-alt"></i>
+                    Betal med Vipps
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('membership-form').addEventListener('submit', function(e) {
+            e.preventDefault();
