@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleri - Østerdølenes Klatreklubb Oslo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles fra tidligere */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .nav {
+            background-color: #1a365d;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        /* Galleri-spesifikke stiler */
+        .gallery-filters {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-button.active {
+            background: #1a365d;
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ØK Oslo</a>
+            <div class="nav-links">
+                <a href="om-oss.html">Om oss</a>
+                <a href="aktiviteter.html">Aktiviteter</a>
+                <a href="galleri.html">Galleri</a>
+                <a href="medlemskap.html">Medlemskap</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1>Galleri</h1>
+
+        <div class="gallery-filters">
+            <button class="filter-button active" data-filter="all">Alle</button>
+            <button class="filter-button" data-filter="klatring">Klatring</button>
+            <button class="filter-button" data-filter="topptur">Topptur</button>
+            <button class="filter-button" data-filter="sosialt">Sosialt</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery">
+            <!-- Bilder legges til via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal for bildegalleri -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img class="modal-image" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        // Galleribilder
+        const galleryImages = [
+            {
+                src: '/api/placeholder/800/800',
+                alt: 'Innendørs buldring',
+                title: 'Ukentlig buldring',
+                category: 'klatring'
+            },
+            {
+                src: '/api/placeholder/800/800',
+                alt: 'Topptur Sogndal',
+                title: 'Vintersamling i Sogndal',
+                category: 'topptur'
+            },
+            {
+                src: '/api/placeholder/800/800',
+                alt: 'Klatring på Kolsås',
+                title: 'Utendørs klatring',
+                category: 'klatring'
+            },
+            {
+                src: '/api/placeholder/800/800',
+                alt: 'Topptur på ski',
+                title: 'På vei mot toppen',
+                category: 'topptur'
+            }
+            // Legg til flere bilder her
+        ];
+
+        // Generer galleri
+        const gallery = document.getElementById('gallery');
+        
+        function createGalleryItems() {
+            gallery.innerHTML = '';
+            galleryImages.forEach(img => {
+                const item = document.createElement('div');
+                item.className = `gallery-item ${img.category}`;
+                item.innerHTML = `
+                    <img src="${img.src}" alt="${img.alt}">
+                    <div class="gallery-overlay">
+                        <h3>${img.title}</h3>
+                    </div>
+                `;
+                gallery.appendChild(item);
+
+                // Legg til click event for modal
+                item.onclick = () => {
+                    openModal(img);
+                };
+            });
+        }
+
+        createGalleryItems();
+
+        // Filtrering
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                
+                // Oppdater active state på knapper
+                document.querySelectorAll('.filter-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // Filtrer bilder
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal funksjonalitet
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.modal-close');
+
+        function openModal(img) {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+            modalCaption.textContent = img.title;
+        }
+
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
