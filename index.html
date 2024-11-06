@@ -6,34 +6,28 @@
     <title>Østerdølenes Klatreklubb Oslo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Reset og base-stiler */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.5;
-            color: #1a1a1a;
-            background-color: #ffffff;
-        }
-
-        /* Navigasjon */
-        .nav-container {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
 
         .nav {
+            background-color: #1a365d;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem;
@@ -42,350 +36,144 @@
             align-items: center;
         }
 
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #1a1a1a;
+        .nav a {
+            color: white;
             text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+        .nav a:hover {
+            opacity: 0.8;
         }
 
-        .nav-links a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0066cc;
-        }
-
-        /* Hero-seksjon */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-                        url('/api/placeholder/1920/1080');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1920/1080');
             background-size: cover;
             background-position: center;
             color: white;
+            padding-top: 60px;
         }
 
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Seksjoner */
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* Kort */
-        .card-grid {
+        .main-sections {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            height: 100vh;
         }
 
-        .card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        /* Knapper */
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #0066cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background: #004999;
-        }
-
-        /* Galleri */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-        }
-
-        .gallery-item {
+        .section-link {
             position: relative;
-            aspect-ratio: 1;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
             overflow: hidden;
-            border-radius: 10px;
-            cursor: pointer;
+            background-size: cover;
+            background-position: center;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Modaler */
-        .modal {
-            display: none;
-            position: fixed;
+        .section-link::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.3s;
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 90vh;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
+        .section-link:hover::before {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .section-content {
             position: relative;
+            z-index: 1;
+            text-align: center;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #1a1a1a;
-        }
-
-        /* Medlemskapsform */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
+        .section-content h2 {
+            font-size: 2rem;
             margin-bottom: 0.5rem;
-            font-weight: 500;
         }
 
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #e2e2e2;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        /* Mobiloptimalisering */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-button {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section {
-                padding: 4rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* Animasjoner */
-        .fade-in {
+        .section-content p {
+            font-size: 1.1rem;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: all 0.3s;
         }
 
-        .fade-in.visible {
+        .section-link:hover .section-content p {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .main-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-link {
+                height: 50vh;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigasjon -->
-    <div class="nav-container">
-        <nav class="nav">
-            <a href="#" class="nav-logo">ØK Oslo</a>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ØK Oslo</a>
             <div class="nav-links">
-                <a href="#om">Om oss</a>
-                <a href="#aktiviteter">Aktiviteter</a>
-                <a href="#galleri">Galleri</a>
-                <a href="#medlemskap">Bli medlem</a>
+                <a href="om-oss.html">Om oss</a>
+                <a href="aktiviteter.html">Aktiviteter</a>
+                <a href="galleri.html">Galleri</a>
+                <a href="medlemskap.html">Medlemskap</a>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
-            <h1>Klatring for østerdøler i Oslo</h1>
-            <p>Bli med i et sterkt fellesskap</p>
-            <a href="#medlemskap" class="button">Bli medlem</a>
+            <h1>Østerdølenes Klatreklubb</h1>
+            <p>Fra klatreveggen til fjelltoppene</p>
         </div>
-    </section>
+    </header>
 
-    <!-- Aktiviteter -->
-    <section id="aktiviteter" class="section">
-        <h2 class="section-title">Ukentlig klatring</h2>
-        <div class="card-grid">
-            <div class="card fade-in">
-                <img src="/api/placeholder/600/400" alt="Innendørs klatring">
-                <div class="card-content">
-                    <h3>Tirsdagsklatring</h3>
-                    <p>Hver tirsdag kl 19:00</p>
-                    <p>Se Spond for lokasjon</p>
-                    <a href="https://spond.com/XXXXX" class="button" target="_blank">Meld deg på i Spond</a>
-                </div>
+    <main class="main-sections">
+        <a href="aktiviteter.html" class="section-link" style="background-image: url('/api/placeholder/800/800')">
+            <div class="section-content">
+                <h2>Aktiviteter</h2>
+                <p>Ukentlig klatring og turer</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Galleri -->
-    <section id="galleri" class="section">
-        <h2 class="section-title">Øyeblikk fra veggen</h2>
-        <div class="gallery">
-            <!-- Bilder genereres dynamisk via JavaScript -->
-        </div>
-    </section>
-
-    <!-- Medlemskap -->
-    <section id="medlemskap" class="section">
-        <h2 class="section-title">Bli medlem</h2>
-        <form id="medlemskap-form" class="form-group">
-            <div class="form-group">
-                <label for="navn">Navn</label>
-                <input type="text" id="navn" required>
+        </a>
+        <a href="galleri.html" class="section-link" style="background-image: url('/api/placeholder/800/800')">
+            <div class="section-content">
+                <h2>Galleri</h2>
+                <p>Øyeblikk fra vegg og fjell</p>
             </div>
-            <div class="form-group">
-                <label for="epost">E-post</label>
-                <input type="email" id="epost" required>
+        </a>
+        <a href="om-oss.html" class="section-link" style="background-image: url('/api/placeholder/800/800')">
+            <div class="section-content">
+                <h2>Om oss</h2>
+                <p>Vår historie og visjon</p>
             </div>
-            <div class="form-group">
-                <label for="medlemstype">Medlemstype</label>
-                <select id="medlemstype">
-                    <option value="ordinaer">Ordinært medlemskap - 500 kr/år</option>
-                    <option value="student">Student - 300 kr/år</option>
-                    <option value="junior">Junior - 200 kr/år</option>
-                </select>
+        </a>
+        <a href="medlemskap.html" class="section-link" style="background-image: url('/api/placeholder/800/800')">
+            <div class="section-content">
+                <h2>Bli medlem</h2>
+                <p>Join the club</p>
             </div>
-            <button type="submit" class="button">Bli medlem med Vipps</button>
-        </form>
-    </section>
-
-    <!-- Modal -->
-    <div class="modal" id="imageModal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <img id="modalImage" src="" alt="Forstørret bilde">
-        </div>
-    </div>
-
-    <script>
-        // Generer galleribilder
-        const galleryImages = [
-            { src: '/api/placeholder/600/600', alt: 'Klatring på Kolsås', title: 'Utendørs buldring' },
-            { src: '/api/placeholder/600/600', alt: 'Innendørs klatring', title: 'Tirsdagsklatring' },
-            { src: '/api/placeholder/600/600', alt: 'Klatretrening', title: 'Teknikktrening' },
-            { src: '/api/placeholder/600/600', alt: 'Sosial klatring', title: 'Klubbkveld' }
-        ];
-
-        const gallery = document.querySelector('.gallery');
-        galleryImages.forEach(img => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item fade-in';
-            item.innerHTML = `<img src="${img.src}" alt="${img.alt}" title="${img.title}">`;
-            gallery.appendChild(item);
-        });
-
-        // Fade-in animasjon
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Modal funksjonalitet
-        const modal = </antArtifact>
+        </a>
+    </main>
+</body>
+</html>
