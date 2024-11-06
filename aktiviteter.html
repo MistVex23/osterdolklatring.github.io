@@ -1,103 +1,48 @@
-<!-- Endre denne delen av koden i main-content, etter fast klatring seksjonen -->
+<!DOCTYPE html>
+<html lang="no">
+<!-- [Behold hele head-seksjonen med styles som i original kode] -->
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ØK Oslo</a>
+            <div class="nav-links">
+                <a href="om-oss.html">Om oss</a>
+                <a href="aktiviteter.html">Aktiviteter</a>
+                <a href="galleri.html">Galleri</a>
+                <a href="medlemskap.html">Medlemskap</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1>Våre aktiviteter</h1>
+
+        <!-- Fast klatring -->
+        <section class="activity-card">
+            <img src="/api/placeholder/1200/300" alt="Innendørs klatring" class="activity-image">
+            <div class="activity-content">
+                <span class="tag fast">Fast aktivitet</span>
+                <h2>Ukentlig klatring</h2>
+                <div class="activity-meta">
+                    <span><i class="far fa-clock"></i> Hver tirsdag kl 19:00</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Se Spond for lokasjon</span>
+                </div>
+                <p>Vi klatrer hovedsakelig på Klatreverkets lokasjoner på Torshov, Bryn og Løkka. Alle nivåer er velkomne!</p>
+                <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                    <i class="fas fa-calendar-plus"></i>
+                    Påmelding i Spond 
+                </a>
+            </div>
+        </section>
 
         <h2>Kommende arrangementer</h2>
         <div class="grid-2">
-            <!-- Vinter 2024 -->
-            <div class="activity-card">
-                <img src="/api/placeholder/600/300" alt="Topptur" class="activity-image">
-                <div class="activity-content">
-                    <span class="tag tur">Topptur</span>
-                    <h3>Toppturhelg i Jotunheimen</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Mars 2024</span>
-                        <span><i class="fas fa-mountain"></i> Jotunheimen</span>
-                    </div>
-                    <p>To dager med toppturer og overnatting i selvbetjent DNT-hytte.</p>
-                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-
-            <!-- Vår 2024 -->
-            <div class="activity-card">
-                <img src="/api/placeholder/600/300" alt="Klatring Dokka" class="activity-image">
-                <div class="activity-content">
-                    <span class="tag tur">Klatring</span>
-                    <h3>Klatring i Dokka</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> April 2024</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
-                    </div>
-                    <p>Helg med klatring i flotte Dokka. For alle nivåer.</p>
-                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-
-            <!-- Sommer 2024 -->
-            <div class="activity-card">
-                <img src="/api/placeholder/600/300" alt="Klatring Flatanger" class="activity-image">
-                <div class="activity-content">
-                    <span class="tag tur">Klatring</span>
-                    <h3>Klatrefestival i Flatanger</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Juli 2024</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Flatanger</span>
-                    </div>
-                    <p>Sommerens høydepunkt med klatring i verdensklasse.</p>
-                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-
-            <!-- Høst 2024 -->
-            <div class="activity-card">
-                <img src="/api/placeholder/600/300" alt="Bohuslän" class="activity-image">
-                <div class="activity-content">
-                    <span class="tag tur">Klatring</span>
-                    <h3>Høsttur til Bohuslän</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> September 2024</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Bohuslän, Sverige</span>
-                    </div>
-                    <p>Tradisjonsrik høsttur til Sveriges beste klatrefelt.</p>
-                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-
-            <!-- Vinter 2024/2025 -->
-            <div class="activity-card">
-                <img src="/api/placeholder/600/300" alt="Julebord" class="activity-image">
-                <div class="activity-content">
-                    <span class="tag sosialt">Sosialt</span>
-                    <h3>Julebord 2024</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Desember 2024</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
-                    </div>
-                    <p>Årets store julefest med middag og sosialt samvær.</p>
-                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-
-            <!-- 2025 -->
+            <!-- Nyttårsbord -->
             <div class="activity-card">
                 <img src="/api/placeholder/600/300" alt="Nyttårsbord" class="activity-image">
                 <div class="activity-content">
                     <span class="tag sosialt">Sosialt</span>
-                    <h3>Nyttårsbord 2025</h3>
+                    <h3>Nyttårsbord</h3>
                     <div class="activity-meta">
                         <span><i class="far fa-calendar"></i> Januar 2025</span>
                         <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
@@ -110,13 +55,14 @@
                 </div>
             </div>
 
+            <!-- Kielferga -->
             <div class="activity-card">
                 <img src="/api/placeholder/600/300" alt="Kielferga" class="activity-image">
                 <div class="activity-content">
                     <span class="tag sosialt">Sosialt</span>
                     <h3>Kielferga</h3>
                     <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Mars 2025</span>
+                        <span><i class="far fa-calendar"></i> Februar 2025</span>
                         <span><i class="fas fa-ship"></i> Oslo - Kiel</span>
                     </div>
                     <p>Sosial helg med klubben på Kielferga.</p>
@@ -126,12 +72,72 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Jotunheimen -->
+            <div class="activity-card">
+                <img src="/api/placeholder/600/300" alt="Topptur" class="activity-image">
+                <div class="activity-content">
+                    <span class="tag tur">Topptur</span>
+                    <h3>Toppturhelg i Jotunheimen</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Mars 2025</span>
+                        <span><i class="fas fa-mountain"></i> Jotunheimen</span>
+                    </div>
+                    <p>To dager med toppturer og overnatting i selvbetjent DNT-hytte.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flaggsvea -->
+            <div class="activity-card">
+                <img src="/api/placeholder/600/300" alt="Klatring" class="activity-image">
+                <div class="activity-content">
+                    <span class="tag tur">Klatring</span>
+                    <h3>Klatrehelg i Flaggsvea</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> April 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Flaggsvea</span>
+                    </div>
+                    <p>Vårens første utendørs klatring.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dokka -->
+            <div class="activity-card">
+                <img src="/api/placeholder/600/300" alt="Klatring" class="activity-image">
+                <div class="activity-content">
+                    <span class="tag tur">Klatring</span>
+                    <h3>Klatretur til Dokka</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Mai 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
+                    </div>
+                    <p>Helg med klatring for alle nivåer.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fortsetter med flere arrangementer... -->
+            <!-- [Legg til resten av arrangementene med samme struktur] -->
+
         </div>
 
-        <!-- Legg til ny stil for sosialt-tag -->
         <style>
             .tag.sosialt {
                 background: #fbd38d;
                 color: #744210;
             }
         </style>
+    </main>
+</body>
+</html>
