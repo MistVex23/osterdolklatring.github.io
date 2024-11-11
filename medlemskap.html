@@ -16,7 +16,7 @@
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
             color: #333;
-            padding-top: 90px;
+            background-color: #f8f9fa;
         }
 
         /* Navigation Styles */
@@ -99,10 +99,10 @@
         }
 
         /* Content Styles */
-        .container {
+        .main-content {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+            margin: 100px auto 40px;
+            padding: 0 20px;
         }
 
         .cards {
@@ -118,6 +118,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding: 2rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card h2 {
@@ -128,6 +131,7 @@
         .card p {
             margin-bottom: 1.5rem;
             color: #666;
+            flex-grow: 1;
         }
 
         .btn {
@@ -138,18 +142,13 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
         }
 
         .btn:hover {
             background-color: #2c4a7c;
-        }
-
-        .btn-secondary {
-            background-color: #4a5568;
-        }
-
-        .btn-secondary:hover {
-            background-color: #2d3748;
         }
 
         .icon {
@@ -228,28 +227,27 @@
                 <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
                 <a href="galleri.html" class="nav-link">Galleri</a>
                 <a href="medlemskap.html" class="nav-link">Medlemskap</a>
-                <a href="webshop.html" class="nav-link">Webshop</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <main class="main-content">
         <h1>Medlemskap og Klubbtøy</h1>
         <div class="cards">
             <div class="card">
                 <i class="fas fa-user-plus icon"></i>
                 <h2>Bli Medlem</h2>
-                <p>Bli en del av vårt aktive klatremiljø. Som medlem får du tilgang til klubbens fasiliteter og arrangementer.</p>
+                <p>Bli en del av vårt aktive miljø.</p>
                 <a href="blimedlem.html" class="btn">Bli medlem nå</a>
             </div>
             <div class="card">
                 <i class="fas fa-tshirt icon"></i>
                 <h2>Klubbtøy</h2>
-                <p>Sjekk ut vårt utvalg av klubbtøy og utstyr. Medlemmer får spesialpriser på alle produkter.</p>
-                <a href="webshop.html" class="btn btn-secondary">Besøk webshop</a>
+                <p>Sjekk ut vårt utvalg av klubbtøy og utstyr.</p>
+                <a href="webshop.html" class="btn">Besøk webshop</a>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
         function toggleMenu() {
