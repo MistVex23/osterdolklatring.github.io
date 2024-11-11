@@ -88,7 +88,6 @@
             width: 100%;
         }
 
-        /* Ny stil for aktiv lenke */
         .nav-link.active {
             color: #4299e1;
             font-weight: 600;
@@ -165,6 +164,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+
             .nav-container {
                 position: relative;
             }
@@ -203,15 +206,6 @@
 
             .nav-link:last-child {
                 border-bottom: none;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-
-            /* Behold aktiv markering på mobil */
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
             }
 
             .logo-main {
