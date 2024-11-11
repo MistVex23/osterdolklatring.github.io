@@ -87,6 +87,16 @@
             width: 100%;
         }
 
+        .nav-link.active {
+            color: #4299e1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: #4299e1;
+        }
+
         .menu-toggle {
             display: none;
             background: none;
@@ -279,6 +289,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+
             .nav-container {
                 position: relative;
             }
@@ -317,10 +331,6 @@
 
             .nav-link:last-child {
                 border-bottom: none;
-            }
-
-            .nav-link::after {
-                display: none;
             }
 
             .logo-main {
