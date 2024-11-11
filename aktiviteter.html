@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="no">
-<!-- [Previous head section and styles remain the same] -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aktiviteter - KØIL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* [Previous styles remain the same] */
         * {
             margin: 0;
             padding: 0;
@@ -45,6 +43,7 @@
         .logo-main {
             font-size: 1.5rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
             color: white;
             text-decoration: none;
         }
@@ -54,6 +53,8 @@
             color: rgba(255,255,255,0.8);
             display: block;
             margin-top: 0.2rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         .nav-links {
@@ -65,14 +66,46 @@
             color: white;
             text-decoration: none;
             font-size: 0.95rem;
+            letter-spacing: 0.3px;
             padding: 0.5rem 0;
             margin-right: 2.5rem;
             position: relative;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .nav-link.active {
             color: #4299e1;
             font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: #4299e1;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         .main-content {
@@ -175,7 +208,14 @@
             }
 
             .logo-container {
-                padding: 0.75rem 1.25rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
             }
 
             .nav-links {
@@ -186,11 +226,37 @@
                 right: 0;
                 background-color: #1a365d;
                 flex-direction: column;
-                padding: 0.75rem 1.25rem;
+                padding: 1rem 1.5rem;
             }
 
             .nav-links.active {
                 display: flex;
+            }
+
+            .nav-link {
+                padding: 1rem 0;
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link.active {
+                background-color: rgba(66, 153, 225, 0.1);
+            }
+
+            .logo-main {
+                font-size: 1.3rem;
+            }
+
+            .logo-sub {
+                font-size: 0.8rem;
             }
 
             .activity-meta {
@@ -209,6 +275,7 @@
         }
     </style>
 </head>
+<body>
     <nav class="nav">
         <div class="nav-container">
             <div class="logo-container">
