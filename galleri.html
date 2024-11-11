@@ -111,7 +111,7 @@
 
         /* Gallery specific styles */
         .main-content {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -273,12 +273,26 @@
             }
 
             .section {
-                padding: 1.5rem;
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+
+.activity-card {
+    max-width: 100%
+    
         }
     </style>
 </head>
