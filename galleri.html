@@ -89,7 +89,6 @@
             width: 100%;
         }
 
-        /* Ny stil for aktiv lenke */
         .nav-link.active {
             color: #4299e1;
             font-weight: 600;
@@ -229,6 +228,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+
             .nav-container {
                 position: relative;
             }
@@ -269,13 +272,8 @@
                 border-bottom: none;
             }
 
-            .nav-link::after {
-                display: none;
-            }
-
-            /* Behold aktiv markering på mobil */
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
 
             .logo-main {
@@ -284,10 +282,6 @@
 
             .logo-sub {
                 font-size: 0.8rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
     </style>
