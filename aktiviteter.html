@@ -72,7 +72,6 @@
             margin-right: 2.5rem;
             position: relative;
             font-weight: 500;
-            transition: color 0.2s ease;
         }
 
         .nav-link::after {
@@ -90,10 +89,6 @@
             width: 100%;
         }
 
-        .nav-link:hover {
-            color: #4299e1;
-        }
-
         .nav-link.active {
             color: #4299e1;
             font-weight: 600;
@@ -109,7 +104,7 @@
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             padding: 0.5rem;
         }
@@ -259,10 +254,6 @@
 
             .nav-link:last-child {
                 border-bottom: none;
-            }
-
-            .nav-link:hover {
-                background-color: rgba(66, 153, 225, 0.1);
             }
 
             .activity-meta {
@@ -418,11 +409,13 @@
                         </div>
                         <p class="activity-description">Overnatting i telt hengende fra fjellveggen.</p>
                         <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
