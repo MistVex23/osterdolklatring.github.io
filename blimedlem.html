@@ -20,7 +20,6 @@
             background-color: #f8f9fa;
         }
 
-        /* Navigation Styles */
         .nav {
             background-color: #1a365d;
             color: white;
@@ -55,7 +54,6 @@
             display: block;
             margin-top: 0.2rem;
             font-weight: 400;
-            letter-spacing: 0.3px;
         }
 
         .nav-links {
@@ -67,7 +65,6 @@
             color: white;
             text-decoration: none;
             font-size: 0.95rem;
-            letter-spacing: 0.3px;
             padding: 0.5rem 0;
             margin-right: 2.5rem;
             position: relative;
@@ -99,76 +96,104 @@
             background: #4299e1;
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* Main Content Styles */
         .main-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
         .section {
             background: white;
-            padding: 1.5rem;
+            padding: 2rem;
             margin-bottom: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .membership-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .membership-title {
-            font-size: 1.5rem;
-            color: #1a365d;
-            font-weight: 600;
-        }
-
-        .price-tag {
-            background: #1a365d;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
-        .price {
+        .membership-title {
             font-size: 1.75rem;
-            font-weight: bold;
-            line-height: 1;
+            color: #1a365d;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
-        .period {
-            font-size: 0.875rem;
-            opacity: 0.9;
+        .payment-options {
+            margin-bottom: 2rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .payment-checkbox {
+            margin-right: 1rem;
+            width: 20px;
+            height: 20px;
+        }
+
+        .payment-info {
+            flex-grow: 1;
+        }
+
+        .payment-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .payment-description {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .payment-price {
+            font-weight: 600;
+            color: #2d3748;
+            padding-left: 1rem;
+        }
+
+        .total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #1a365d;
+            color: white;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .total-label {
+            font-weight: 500;
+        }
+
+        .total-amount {
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
         .benefits-card, .steps-card {
             background: #f8fafc;
-            padding: 1.25rem;
-            border-radius: 6px;
+            padding: 1.5rem;
+            border-radius: 8px;
             height: 100%;
         }
 
@@ -184,15 +209,13 @@
 
         .benefits-list, .steps-list {
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
 
         .benefits-list li {
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
@@ -202,14 +225,16 @@
 
         .benefits-list li i {
             color: #4299e1;
-            font-size: 0.875rem;
+        }
+
+        .steps-list {
+            counter-reset: step;
         }
 
         .steps-list li {
-            padding: 0.5rem 0;
-            padding-left: 2rem;
+            padding: 0.75rem 0 0.75rem 2.5rem;
             position: relative;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .steps-list li::before {
@@ -217,49 +242,48 @@
             content: counter(step);
             position: absolute;
             left: 0;
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.75rem;
+            height: 1.75rem;
             background: #4299e1;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
+            font-weight: 500;
         }
 
-        .form-container {
+        .registration-form {
             background: #f8fafc;
-            padding: 1.25rem;
-            border-radius: 6px;
-            margin-top: 1rem;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             font-weight: 500;
             color: #2d3748;
-            font-size: 0.875rem;
         }
 
         .form-group input {
             width: 100%;
-            padding: 0.625rem;
+            padding: 0.75rem;
             border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            transition: border-color 0.2s;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.2s;
         }
 
         .form-group input:focus {
@@ -271,19 +295,19 @@
         .vipps-button {
             background: #ff5b24;
             color: white;
-            padding: 0.75rem;
+            padding: 1rem;
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             transition: all 0.2s;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
 
         .vipps-button:hover {
@@ -291,20 +315,19 @@
             transform: translateY(-1px);
         }
 
-        .vipps-button:active {
-            transform: translateY(0);
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         @media (max-width: 768px) {
             .nav-container {
                 position: relative;
-            }
-
-            .logo-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 1.5rem;
             }
 
             .menu-toggle {
@@ -319,7 +342,7 @@
                 right: 0;
                 background-color: #1a365d;
                 flex-direction: column;
-                padding: 1rem 1.5rem;
+                padding: 1rem;
             }
 
             .nav-links.active {
@@ -332,43 +355,16 @@
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
-            }
-
             .content-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
 
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .membership-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .price-tag {
-                width: 100%;
-            }
-
-            .logo-main {
-                font-size: 1.3rem;
-            }
-
-            .logo-sub {
-                font-size: 0.8rem;
+            .section {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -395,17 +391,7 @@
     <main class="main-content">
         <section class="section">
             <div class="membership-header">
-                <div class="membership-title">Medlemskap KØIL</div>
-                <div class="price-tag">
-                    <div class="price">350 kr</div>
-                    <div class="period">per år</div>
-                </div>
-            </div>
-
-                <main class="main-content">
-        <section class="section">
-            <div class="membership-header">
-                <div class="membership-title">Medlemskap KØIL</div>
+                <h1 class="membership-title">Bli medlem i KØIL</h1>
             </div>
 
             <div class="payment-options">
@@ -422,13 +408,13 @@
                     <input type="checkbox" class="payment-checkbox" id="treningsavgift">
                     <div class="payment-info">
                         <div class="payment-title">Treningsavgift Klatregruppa</div>
-                        <div class="payment-description">Tilgang til ukentlige klatreaktiviteter og organiserte turer</div>
+                        <div class="payment-description">Tilgang til ukentlige klatreaktiviteter og arrangerte turer</div>
                     </div>
                     <div class="payment-price">500 kr</div>
                 </label>
 
                 <div class="total-section">
-                    <span class="total-label">Totalt å betale:</span>
+                    <span class="total-label">Sum å betale:</span>
                     <span class="total-amount" id="totalAmount">0 kr</span>
                 </div>
             </div>
@@ -437,13 +423,14 @@
                 <div class="benefits-card">
                     <div class="card-title">
                         <i class="fas fa-check-circle"></i>
-                        Dette får du
+                        Medlemsfordeler
                     </div>
                     <ul class="benefits-list">
-                        <li><i class="fas fa-check"></i>Delta på ukentlige klatreaktiviteter</li>
-                        <li><i class="fas fa-check"></i>Bli med på organiserte turer</li>
-                        <li><i class="fas fa-check"></i>Del av Østerdalens Idrettslag</li>
-                        <li><i class="fas fa-check"></i>Stemmerett på årsmøte</li>
+                        <li><i class="fas fa-check"></i>Delta på ukentlige klatreøkter</li>
+                        <li><i class="fas fa-check"></i>Bli med på arrangerte turer</li>
+                        <li><i class="fas fa-check"></i>Medlemskap i Østerdølenes Idrettslag</li>
+                        <li><i class="fas fa-check"></i>Stemmerett på årsmøtet</li>
+                        <li><i class="fas fa-check"></i>Tilgang til klubbens utstyr</li>
                     </ul>
                 </div>
 
@@ -453,55 +440,34 @@
                         Slik blir du medlem
                     </div>
                     <ol class="steps-list">
-                        <li>Fyll ut skjemaet under</li>
-                        <li>Betal med Vipps</li>
-                        <li>Bli med i Spond-gruppen</li>
+                        <li>Velg medlemskap og fyll ut skjemaet</li>
+                        <li>Betal kontingent med Vipps</li>
+                        <li>Motta bekreftelse på e-post</li>
+                        <li>Bli med i Spond-gruppen vår</li>
                     </ol>
                 </div>
             </div>
 
-            <div class="form-container">
+            <div class="registration-form">
                 <form id="membership-form">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="fornavn">Fornavn</label>
-                            <input type="text" id="fornavn" required>
+                            <input type="text" id="fornavn" required placeholder="Skriv fornavnet ditt">
                         </div>
                         <div class="form-group">
                             <label for="etternavn">Etternavn</label>
-                            <input type="text" id="etternavn" required>
+                            <input type="text" id="etternavn" required placeholder="Skriv etternavnet ditt">
                         </div>
                         <div class="form-group">
-                            <label for="epost">E-post</label>
-                            <input type="email" id="epost" required>
+                            <label for="epost">E-postadresse</label>
+                            <input type="email" id="epost" required placeholder="din@epost.no">
                         </div>
                         <div class="form-group">
-                            <label for="telefon">Telefon</label>
-                            <input type="tel" id="telefon" required>
+                            <label for="telefon">Mobilnummer</label>
+                            <input type="tel" id="telefon" required placeholder="123 45 678">
                         </div>
                     </div>
                     <button type="submit" class="vipps-button">
                         <i class="fas fa-mobile-alt"></i>
-                        Betal med Vipps
-                    </button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                        B
