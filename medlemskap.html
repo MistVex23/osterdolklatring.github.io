@@ -175,6 +175,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+
             .nav-container {
                 position: relative;
             }
@@ -215,21 +219,12 @@
                 border-bottom: none;
             }
 
-            .nav-link::after {
-                display: none;
+            .section {
+                padding: 1.5rem;
             }
 
-            /* Behold aktiv markering på mobil */
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
-            }
-
-            .logo-main {
-                font-size: 1.3rem;
-            }
-
-            .logo-sub {
-                font-size: 0.8rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
