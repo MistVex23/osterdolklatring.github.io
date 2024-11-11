@@ -15,7 +15,7 @@
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
             color: #333;
-            padding-top: 90px;
+            padding-top: 140px;
             background-color: #f8f9fa;
         }
 
@@ -88,6 +88,17 @@
             width: 100%;
         }
 
+        /* Ny stil for aktiv lenke */
+        .nav-link.active {
+            color: #4299e1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: #4299e1;
+        }
+
         .menu-toggle {
             display: none;
             background: none;
@@ -111,11 +122,6 @@
             margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            margin-bottom: 2rem;
-            color: #1a365d;
         }
 
         h2 {
@@ -203,6 +209,11 @@
                 display: none;
             }
 
+            /* Behold aktiv markering på mobil */
+            .nav-link.active {
+                background-color: rgba(66, 153, 225, 0.1);
+            }
+
             .logo-main {
                 font-size: 1.3rem;
             }
@@ -224,7 +235,7 @@
                 <button class="menu-toggle" onclick="toggleMenu()">≡</button>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="om-oss.html" class="nav-link">Om oss</a>
+                <a href="om-oss.html" class="nav-link active">Om oss</a>
                 <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
                 <a href="galleri.html" class="nav-link">Galleri</a>
                 <a href="medlemskap.html" class="nav-link">Medlemskap</a>
@@ -233,8 +244,6 @@
     </nav>
 
     <main class="main-content">
-        <h1></h1>
-        
         <section class="section">
             <h2>Vår historie</h2>
             <p>Østerdølenes Klatreklubb er en del av Østerdølenes idrettslag i Oslo (ØIL), og ble startet av en gruppe klatreentusiaster med røtter fra Østerdalen som ønsket å skape et fellesskap rundt klatring og fjellliv i Oslo og omeng. Restauranten Grisen fungerer som klubbens uformelle klubbhus og samlingspunkt.</p>
