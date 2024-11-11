@@ -1,291 +1,424 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Aktiviteter - Østerdølenes Klatreklubb Oslo</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <style>
-       /* Base styles fra om-oss.html */
-       * {
-           margin: 0;
-           padding: 0;
-           box-sizing: border-box;
-       }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktiviteter - KØIL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-       body {
-           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-           line-height: 1.6;
-           color: #333;
-           background-color: #f8f9fa;
-       }
+        body {
+            font-family: -apple-system, system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding-top: 120px;
+            background-color: #f8f9fa;
+        }
 
-       .nav {
-           background-color: #1a365d;
-           color: white;
-           position: fixed;
-           width: 100%;
-           top: 0;
-           z-index: 1000;
-       }
+        /* Navigation Styles */
+        .nav {
+            background-color: #1a365d;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-       .nav-container {
-           max-width: 1200px;
-           margin: 0 auto;
-           padding: 1rem;
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-       }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-       .nav a {
-           color: white;
-           text-decoration: none;
-           margin: 0 1rem;
-           transition: opacity 0.3s;
-       }
+        .logo-container {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-       .nav a:hover {
-           opacity: 0.8;
-       }
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: white;
+            text-decoration: none;
+        }
 
-       .main-content {
-           max-width: 1200px;
-           margin: 100px auto 40px;
-           padding: 0 20px;
-       }
+        .logo-sub {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            display: block;
+            margin-top: 0.2rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
 
-       /* Aktivitetsspesifikke stiler */
-       .activity-card {
-           background: white;
-           border-radius: 8px;
-           overflow: hidden;
-           margin-bottom: 2rem;
-           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-       }
+        .nav-links {
+            display: flex;
+            padding: 0.8rem 2rem;
+        }
 
-       .activity-image {
-           width: 100%;
-           height: 300px;
-           object-fit: cover;
-       }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 0;
+            margin-right: 2.5rem;
+            position: relative;
+            font-weight: 500;
+        }
 
-       .activity-content {
-           padding: 2rem;
-       }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.2s ease;
+        }
 
-       .activity-meta {
-           display: flex;
-           gap: 2rem;
-           margin-bottom: 1rem;
-           color: #4a5568;
-       }
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-       .tag {
-           display: inline-block;
-           padding: 0.25rem 0.75rem;
-           border-radius: 15px;
-           font-size: 0.875rem;
-           margin-right: 0.5rem;
-       }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-       .tag.fast {
-           background: #9ae6b4;
-           color: #22543d;
-       }
+        /* Activity Specific Styles */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-       .tag.tur {
-           background: #90cdf4;
-           color: #2c5282;
-       }
+        h1 {
+            margin-bottom: 2rem;
+            color: #1a365d;
+            padding-top: 20px;
+        }
 
-       .spond-button {
-           display: inline-flex;
-           align-items: center;
-           gap: 0.5rem;
-           background: #4CAF50;
-           color: white;
-           padding: 0.75rem 1.5rem;
-           border-radius: 4px;
-           text-decoration: none;
-           margin-top: 1rem;
-           transition: background 0.3s;
-       }
+        .activity-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-       .spond-button:hover {
-           background: #45a049;
-       }
+        .activity-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
 
-       .grid-2 {
-           display: grid;
-           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-           gap: 2rem;
-           margin-top: 2rem;
-       }
+        .activity-content {
+            padding: 2rem;
+        }
 
-       @media (max-width: 768px) {
-           .activity-meta {
-               flex-direction: column;
-               gap: 0.5rem;
-           }
-       }
-   </style>
+        .activity-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+
+        .tag.fast {
+            background: #9ae6b4;
+            color: #22543d;
+        }
+
+        .tag.tur {
+            background: #90cdf4;
+            color: #2c5282;
+        }
+
+        .spond-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .spond-button:hover {
+            background: #45a049;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            .nav-container {
+                position: relative;
+            }
+
+            .logo-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 1rem 0;
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .logo-main {
+                font-size: 1.3rem;
+            }
+
+            .logo-sub {
+                font-size: 0.8rem;
+            }
+
+            .activity-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   <nav class="nav">
-       <div class="nav-container">
-           <a href="index.html" class="logo">Østerdølenes Klatreklubb</a>
-           <div class="nav-links">
-               <a href="om-oss.html">Om oss</a>
-               <a href="aktiviteter.html">Aktiviteter</a>
-               <a href="galleri.html">Galleri</a>
-               <a href="medlemskap.html">Medlemskap</a>
-           </div>
-       </div>
-   </nav>
-
-   <main class="main-content">
-       <h1>Våre aktiviteter</h1>
-
-       <!-- Fast klatring -->
-       <section class="activity-card">
-           <img src="/api/placeholder/1200/300" alt="Innendørs klatring" class="activity-image">
-           <div class="activity-content">
-               <span class="tag fast">Fast aktivitet</span>
-               <h2>Ukentlig klatring</h2>
-               <div class="activity-meta">
-                   <span><i class="far fa-clock"></i> Hver tirsdag kl 19:00</span>
-                   <span><i class="fas fa-map-marker-alt"></i> Se Spond for lokasjon</span>
-               </div>
-               <p>Vi møtes hver tirsdag for felles klatring. Alle nivåer er velkomne! Vi roterer mellom ulike klatresenter i Oslo.</p>
-               <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                   <i class="fas fa-calendar-plus"></i>
-                   Meld deg på i Spond
-               </a>
-           </div>
-       </section>
-
-       <h2>Kommende arrangementer</h2>
-       <div class="grid-2">
-           <!-- Badstu og øl -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Sosialt</span>
-                   <h3>Badstu og øl</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> Desember 2024</span>
-                       <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
-                   </div>
-                   <p>Badstu med påfølgende øl.</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
-
-           <!-- Julebord og nyttårsbord -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Sosialt</span>
-                   <h3>Julebord og nyttårsbord</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> Januar 2025</span>
-                       <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
-                   </div>
-                   <p>Vi starter året!</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
-
-          <!-- Kielferja -->
-<div class="activity-card">
-    <div class="activity-content">
-        <span class="tag tur">Sosialt</span>
-        <h3>Kielferja</h3>
-        <div class="activity-meta">
-            <span><i class="far fa-calendar"></i> Februar 2025</span>
-            <span><i class="fas fa-ship"></i> Oslo - Kiel</span>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-main">
+                    KØIL
+                    <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
+                </a>
+                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="om-oss.html" class="nav-link">Om oss</a>
+                <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
+                <a href="galleri.html" class="nav-link">Galleri</a>
+                <a href="medlemskap.html" class="nav-link">Medlemskap</a>
+            </div>
         </div>
-        <p>Sosialt med klubben på Kielferja.</p>
-        <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-            <i class="fas fa-calendar-plus"></i>
-            Påmelding i Spond
-        </a>
-    </div>
-</div>
+    </nav>
 
-           <!-- Topptur Jotunheimen -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Topptur</span>
-                   <h3>Toppturhelg i Jotunheimen</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> Mars 2025</span>
-                       <span><i class="fas fa-mountain"></i> Jotunheimen</span>
-                   </div>
-                   <p>To dager med toppturer og DNT-hytte.</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
+    <main class="main-content">
+        <h1>Våre aktiviteter</h1>
 
-           <!-- Flaggsvae, Jarlberget -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Klatring</span>
-                   <h3>Flaggsvae, Jarlberget</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> April 2025</span>
-                       <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
-                   </div>
-                   <p>Overnatting i telt hengende fra fjellveggen.</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
+        <!-- Fast klatring -->
+        <section class="activity-card">
+            <img src="/api/placeholder/1200/300" alt="Innendørs klatring" class="activity-image">
+            <div class="activity-content">
+                <span class="tag fast">Fast aktivitet</span>
+                <h2>Ukentlig klatring</h2>
+                <div class="activity-meta">
+                    <span><i class="far fa-clock"></i> Hver tirsdag kl 19:00</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Se Spond for lokasjon</span>
+                </div>
+                <p>Vi møtes hver tirsdag for felles klatring. Alle nivåer er velkomne! Vi roterer mellom ulike klatresenter i Oslo.</p>
+                <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                    <i class="fas fa-calendar-plus"></i>
+                    Meld deg på i Spond
+                </a>
+            </div>
+        </section>
 
-           <!-- Jutulhogget -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Klatring</span>
-                   <h3>Jutulhogget</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> Juni 2025</span>
-                       <span><i class="fas fa-map-marker-alt"></i> Rendalen</span>
-                   </div>
-                   <p>Klatring på hjemmebane.</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
+        <h2>Kommende arrangementer</h2>
+        <div class="grid-2">
+            <!-- Rest of the activity cards remain the same -->
+            <!-- Badstu og øl -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Sosialt</span>
+                    <h3>Badstu og øl</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Desember 2024</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
+                    </div>
+                    <p>Badstu med påfølgende øl.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
 
-           <!-- Flatanger -->
-           <div class="activity-card">
-               <div class="activity-content">
-                   <span class="tag tur">Klatring</span>
-                   <h3>Flatanger</h3>
-                   <div class="activity-meta">
-                       <span><i class="far fa-calendar"></i> August 2025</span>
-                       <span><i class="fas fa-map-marker-alt"></i> Flatanger</span>
-                   </div>
-                   <p>Sensommertur til et av Norges beste klatreområder.</p>
-                   <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
-                       <i class="fas fa-calendar-plus"></i>
-                       Påmelding i Spond
-                   </a>
-               </div>
-           </div>
-       </div>
-   </main>
-</body>
-</html>
+            <!-- Julebord og nyttårsbord -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Sosialt</span>
+                    <h3>Julebord og nyttårsbord</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Januar 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
+                    </div>
+                    <p>Vi starter året!</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kielferja -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Sosialt</span>
+                    <h3>Kielferja</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Februar 2025</span>
+                        <span><i class="fas fa-ship"></i> Oslo - Kiel</span>
+                    </div>
+                    <p>Sosialt med klubben på Kielferja.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topptur Jotunheimen -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Topptur</span>
+                    <h3>Toppturhelg i Jotunheimen</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Mars 2025</span>
+                        <span><i class="fas fa-mountain"></i> Jotunheimen</span>
+                    </div>
+                    <p>To dager med toppturer og DNT-hytte.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flaggsvae, Jarlberget -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Klatring</span>
+                    <h3>Flaggsvae, Jarlberget</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> April 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
+                    </div>
+                    <p>Overnatting i telt hengende fra fjellveggen.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Jutulhogget -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Klatring</span>
+                    <h3>Jutulhogget</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> Juni 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Rendalen</span>
+                    </div>
+                    <p>Klatring på hjemmebane.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flatanger -->
+            <div class="activity-card">
+                <div class="activity-content">
+                    <span class="tag tur">Klatring</span>
+                    <h3>Flatanger</h3>
+                    <div class="activity-meta">
+                        <span><i class="far fa-calendar"></i> August 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Flatanger</span>
+                    </div>
+                    <p>Sensommertur til et av Norges beste klatreområder.</p>
+                    <a href="https://spond.com/XXXXX" target="_blank" class="spond-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        Påmelding i Spond
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body
