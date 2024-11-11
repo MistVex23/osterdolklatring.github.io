@@ -63,31 +63,31 @@
             padding: 0.8rem 2rem;
         }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-    padding: 0.5rem 0;
-    margin-right: 2.5rem;
-    position: relative;  /* Dette er viktig! */
-    font-weight: 500;
-}
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 0;
+            margin-right: 2.5rem;
+            position: relative;
+            font-weight: 500;
+        }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.2s ease;
-}
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.2s ease;
+        }
 
-.nav-link:hover::after {
-    width: 100%;
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
         .nav-link.active {
             color: #4299e1;
@@ -109,65 +109,7 @@
             padding: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-container {
-                position: relative;
-            }
-
-            .logo-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 1.5rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #1a365d;
-                flex-direction: column;
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-link {
-                padding: 1rem 0;
-                margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
-            }
-
-            .logo-main {
-                font-size: 1.3rem;
-            }
-
-            .logo-sub {
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Rest of the existing styles */
+        /* Main Content Styles */
         .main-content {
             max-width: 800px;
             margin: 0 auto;
@@ -340,6 +282,46 @@
                 padding-top: 100px;
             }
 
+            .nav-container {
+                position: relative;
+            }
+
+            .logo-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 1rem 0;
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
             .section {
                 padding: 1.5rem;
             }
@@ -360,6 +342,14 @@
             .payment-price {
                 margin-top: 1rem;
             }
+
+            .logo-main {
+                font-size: 1.3rem;
+            }
+
+            .logo-sub {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -370,7 +360,7 @@
                 <a href="index.html" class="logo-main">
                     KØIL
                     <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
-                 </a>
+                </a>
                 <button class="menu-toggle" onclick="toggleMenu()">≡</button>
             </div>
             <div class="nav-links" id="navLinks">
@@ -470,6 +460,7 @@
     </main>
 
     <script>
+        // Total beregning
         const arskontigent = document.getElementById('arskontigent');
         const treningsavgift = document.getElementById('treningsavgift');
         const totalAmount = document.getElementById('totalAmount');
@@ -477,10 +468,7 @@
         function updateTotal() {
             let total = 0;
             if (arskontigent.checked) total += 350;
-            if (
-                
-}
-</script>
+            if (trenings
 
     <script>
 function toggleMenu() {
