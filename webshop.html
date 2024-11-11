@@ -16,9 +16,11 @@
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
             color: #333;
-            padding-top: 60px;
+            padding-top: 140px;
+            background-color: #f8f9fa;
         }
 
+        /* Navigation Styles */
         .nav {
             background-color: #1a365d;
             color: white;
@@ -26,41 +28,107 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .nav a {
+        .logo-container {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             color: white;
             text-decoration: none;
-            margin: 0 1rem;
         }
 
+        .logo-sub {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            display: block;
+            margin-top: 0.2rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 0;
+            margin-right: 2.5rem;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #4299e1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: #4299e1;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Content Styles */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .product-card {
-            border: 1px solid #eee;
+            background: white;
+            border: none;
             border-radius: 8px;
             padding: 1.5rem;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .product-images {
@@ -99,6 +167,7 @@
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
+            transition: background-color 0.2s;
         }
 
         .buy-btn:hover {
@@ -109,38 +178,99 @@
             font-size: 1.2rem;
             font-weight: bold;
             margin: 0.5rem 0;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
+            color: #1a365d;
         }
 
         .product-description {
             margin: 1rem 0;
             color: #666;
         }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                position: relative;
+            }
+
+            .logo-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a365d;
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 1rem 0;
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link.active {
+                background-color: rgba(66, 153, 225, 0.1);
+            }
+
+            .logo-main {
+                font-size: 1.3rem;
+            }
+
+            .logo-sub {
+                font-size: 0.8rem;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">KØIL - Klatregruppa i Østerdølenes Idrettslag</a>
-            <div class="nav-links">
-                <a href="om-oss.html">Om oss</a>
-                <a href="aktiviteter.html">Aktiviteter</a>
-                <a href="galleri.html">Galleri</a>
-                <a href="medlemskap.html">Medlemskap</a>
+            <div class="logo-container">
+                <a href="index.html" class="logo-main">
+                    KØIL
+                    <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
+                </a>
+                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="om-oss.html" class="nav-link">Om oss</a>
+                <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
+                <a href="galleri.html" class="nav-link">Galleri</a>
+                <a href="medlemskap.html" class="nav-link">Medlemskap</a>
+                <a href="utstyr.html" class="nav-link active">Utstyr</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <div class="header">
-            <h1>Utstyr</h1>
-            <p>Kvalitetsklær og nyttig utstyr til våre medlemmer</p>
-        </div>
-
         <div class="products">
             <div class="product-card">
                 <div class="product-images">
@@ -252,5 +382,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
