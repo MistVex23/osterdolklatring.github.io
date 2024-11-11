@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aktiviteter - KØIL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -108,20 +109,31 @@
             padding: 0.5rem;
         }
 
+        /* Main Content Styles */
         .main-content {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .section-title {
             font-size: 1.5rem;
-            margin: 1.5rem 0;
             color: #1a365d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
         }
 
         .activity-card {
-            background: white;
+            background: #f8fafc;
             border-radius: 8px;
             margin-bottom: 1.25rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -200,7 +212,7 @@
 
         @media (max-width: 768px) {
             body {
-                padding-top: 120px;
+                padding-top: 100px;
             }
 
             .nav-container {
@@ -247,18 +259,6 @@
                 display: none;
             }
 
-            .nav-link.active {
-                background-color: rgba(66, 153, 225, 0.1);
-            }
-
-            .logo-main {
-                font-size: 1.3rem;
-            }
-
-            .logo-sub {
-                font-size: 0.8rem;
-            }
-
             .activity-meta {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -271,6 +271,10 @@
 
             .activity-content {
                 padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -297,167 +301,124 @@
     </nav>
 
     <main class="main-content">
-        <!-- Fast klatring -->
-        <section class="activity-card">
-            <div class="activity-content">
-                <div class="activity-header">
-                    <span class="tag fast">Fast aktivitet</span>
-                </div>
-                <h2 class="activity-title">Ukentlig klatring</h2>
-                <div class="activity-meta">
-                    <span><i class="far fa-clock"></i> Hver tirsdag kl 19:00</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Se Spond for lokasjon</span>
-                </div>
-                <p class="activity-description">Vi møtes hver tirsdag for felles klatring. Alle nivåer er velkomne! Vi roterer mellom ulike klatresenter i Oslo.</p>
-                <a href="https://group.spond.com/QQXLM" class="spond-button">
-                    <i class="fas fa-calendar-plus"></i>
-                    Meld deg på i Spond
-                </a>
-            </div>
-        </section>
-
-        <h2 class="section-title">Kommende arrangementer</h2>
-        <div class="grid-2">
-            <!-- Badstu og øl -->
-            <div class="activity-card">
+        <section class="section">
+            <!-- Fast klatring -->
+            <section class="activity-card">
                 <div class="activity-content">
                     <div class="activity-header">
-                        <span class="tag tur">Sosialt</span>
+                        <span class="tag fast">Fast aktivitet</span>
                     </div>
-                    <h3 class="activity-title">Badstu og øl</h3>
+                    <h2 class="activity-title">Ukentlig klatring</h2>
                     <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Desember 2024</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
+                        <span><i class="far fa-clock"></i> Hver tirsdag kl 19:00</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Se Spond for lokasjon</span>
                     </div>
-                    <p class="activity-description">Badstu med påfølgende øl.</p>
+                    <p class="activity-description">Vi møtes hver tirsdag for felles klatring. Alle nivåer er velkomne! Vi roterer mellom ulike klatresenter i Oslo.</p>
                     <a href="https://group.spond.com/QQXLM" class="spond-button">
                         <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
+                        Meld deg på i Spond
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <!-- Julebord og nyttårsbord -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Sosialt</span>
+            <h2 class="section-title">Kommende arrangementer</h2>
+            <div class="grid-2">
+                <!-- Badstu og øl -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="tag tur">Sosialt</span>
+                        </div>
+                        <h3 class="activity-title">Badstu og øl</h3>
+                        <div class="activity-meta">
+                            <span><i class="far fa-calendar"></i> Desember 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
+                        </div>
+                        <p class="activity-description">Badstu med påfølgende øl.</p>
+                        <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
                     </div>
-                    <h3 class="activity-title">Julebord og nyttårsbord</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Januar 2025</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
-                    </div>
-                    <p class="activity-description">Vi starter året!</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
                 </div>
-            </div>
 
-            <!-- Kielferja -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Sosialt</span>
+                <!-- Julebord og nyttårsbord -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="tag tur">Sosialt</span>
+                        </div>
+                        <h3 class="activity-title">Julebord og nyttårsbord</h3>
+                        <div class="activity-meta">
+                            <span><i class="far fa-calendar"></i> Januar 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Oslo</span>
+                        </div>
+                        <p class="activity-description">Vi starter året!</p>
+                        <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
                     </div>
-                    <h3 class="activity-title">Kielferja</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Februar 2025</span>
-                        <span><i class="fas fa-ship"></i> Oslo - Kiel</span>
-                    </div>
-                    <p class="activity-description">Sosialt med klubben på Kielferja.</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
                 </div>
-            </div>
 
-            <!-- Topptur Jotunheimen -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Topptur</span>
+                <!-- Kielferja -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="tag tur">Sosialt</span>
+                        </div>
+                        <h3 class="activity-title">Kielferja</h3>
+                        <div class="activity-meta">
+                            <span><i class="far fa-calendar"></i> Februar 2025</span>
+                            <span><i class="fas fa-ship"></i> Oslo - Kiel</span>
+                        </div>
+                        <p class="activity-description">Sosialt med klubben på Kielferja.</p>
+                        <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
                     </div>
-                    <h3 class="activity-title">Toppturhelg i Jotunheimen</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Mars 2025</span>
-                        <span><i class="fas fa-mountain"></i> Jotunheimen</span>
-                    </div>
-                    <p class="activity-description">To dager med toppturer og DNT-hytte.</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
                 </div>
-            </div>
 
-            <!-- Flaggsvae, Jarlberget -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Klatring</span>
+                <!-- Topptur Jotunheimen -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="tag tur">Topptur</span>
+                        </div>
+                        <h3 class="activity-title">Toppturhelg i Jotunheimen</h3>
+                        <div class="activity-meta">
+                            <span><i class="far fa-calendar"></i> Mars 2025</span>
+                            <span><i class="fas fa-mountain"></i> Jotunheimen</span>
+                        </div>
+                        <p class="activity-description">To dager med toppturer og DNT-hytte.</p>
+                        <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
                     </div>
-                    <h3 class="activity-title">Flaggsvae, Jarlberget</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> April 2025</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
-                    </div>
-                    <p class="activity-description">Overnatting i telt hengende fra fjellveggen.</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
                 </div>
-            </div>
 
-            <!-- Jutulhogget -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Klatring</span>
+                <!-- Flaggsvae, Jarlberget -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="tag tur">Klatring</span>
+                        </div>
+                        <h3 class="activity-title">Flaggsvae, Jarlberget</h3>
+                        <div class="activity-meta">
+                            <span><i class="far fa-calendar"></i> April 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Dokka</span>
+                        </div>
+                        <p class="activity-description">Overnatting i telt hengende fra fjellveggen.</p>
+                        <a href="https://group.spond.com/QQXLM" class="spond-button">
+                            <i class="fas fa-calendar-plus"></i>
+                            Påmelding i Spond
+                        </a>
                     </div>
-                    <h3 class="activity-title">Jutulhogget</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> Juni 2025</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Rendalen</span>
-                    </div>
-                    <p class="activity-description">Klatring på hjemmebane.</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
                 </div>
-            </div>
 
-            <!-- Flatanger -->
-            <div class="activity-card">
-                <div class="activity-content">
-                    <div class="activity-header">
-                        <span class="tag tur">Klatring</span>
-                    </div>
-                    <h3 class="activity-title">Flatanger</h3>
-                    <div class="activity-meta">
-                        <span><i class="far fa-calendar"></i> August 2025</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Flatanger</span>
-                    </div>
-                    <p class="activity-description">Sensommertur til et av Norges beste klatreområder.</p>
-                    <a href="https://group.spond.com/QQXLM" class="spond-button">
-                        <i class="fas fa-calendar-plus"></i>
-                        Påmelding i Spond
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
-
-<script>
-function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
-}
-</script>
+                <!-- Jutulhogget -->
+                <div class="activity-card">
+                    <div class="activity-content">
+                        <div class="activity-
