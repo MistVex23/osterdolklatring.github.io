@@ -17,10 +17,11 @@
             line-height: 1.6;
             color: #333;
             padding-top: 60px;
-            padding-bottom: 60px;
+            padding-bottom: 120px;
             background-color: #f8f9fa;
             min-height: 100vh;
             position: relative;
+            margin-bottom: 100px;
         }
 
         .header {
@@ -59,8 +60,9 @@
 
         .contact-section {
             max-width: 800px;
-            margin: 2rem auto;
+            margin: 2rem auto 6rem auto;
             padding: 0 1rem;
+            min-height: calc(100vh - 180px);
         }
 
         h1 {
@@ -68,6 +70,7 @@
             margin-bottom: 2rem;
             color: #1a365d;
             font-size: 2rem;
+            padding-top: 1rem;
         }
 
         .contact-category {
@@ -113,6 +116,7 @@
 
         .contact-list li:last-child {
             border-bottom: none;
+            margin-bottom: 0.5rem;
         }
 
         .contact-list i {
@@ -197,10 +201,16 @@
             background: #4299e1;
         }
 
+        .content-wrapper {
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding-top: 50px;
-                padding-bottom: 65px;
+                padding-bottom: 100px;
+                margin-bottom: 80px;
             }
 
             .logo-container {
@@ -225,6 +235,11 @@
                 margin-bottom: 1rem;
             }
 
+            .contact-section {
+                margin: 1rem auto 5rem auto;
+                min-height: calc(100vh - 150px);
+            }
+
             .nav-links {
                 padding: 0.75rem 1rem;
             }
@@ -241,79 +256,81 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <a href="index.html" class="logo-main">
-                KØIL
-                <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
-            </a>
-        </div>
-    </header>
+    <div class="content-wrapper">
+        <header class="header">
+            <div class="logo-container">
+                <a href="index.html" class="logo-main">
+                    KØIL
+                    <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
+                </a>
+            </div>
+        </header>
 
-    <div class="contact-section">
-        <h1>Kontakt oss</h1>
-        
-        <div class="contact-category">
-            <h2 class="category-title">
-                <i class="fas fa-users"></i>
-                Styret
-            </h2>
-            <ul class="contact-list">
-                <li>
-                    <i class="fas fa-user"></i>
-                    <span class="placeholder-text">Navn på styreleder</span>
-                </li>
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <span class="placeholder-text">E-post til styret</span>
-                </li>
-                <li>
-                    <i class="fas fa-phone"></i>
-                    <span class="placeholder-text">Telefonnummer</span>
-                </li>
-            </ul>
-        </div>
+        <div class="contact-section">
+            <h1>Kontakt oss</h1>
+            
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-users"></i>
+                    Styret
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-user"></i>
+                        <span class="placeholder-text">Navn på styreleder</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span class="placeholder-text">E-post til styret</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span class="placeholder-text">Telefonnummer</span>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="contact-category">
-            <h2 class="category-title">
-                <i class="fas fa-info-circle"></i>
-                Generell info
-            </h2>
-            <ul class="contact-list">
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <span class="placeholder-text">E-post for generelle henvendelser</span>
-                </li>
-                <li>
-                    <i class="fab fa-facebook"></i>
-                    <span class="placeholder-text">Link til Facebook</span>
-                </li>
-                <li>
-                    <i class="fab fa-instagram"></i>
-                    <span class="placeholder-text">Link til Instagram</span>
-                </li>
-            </ul>
-        </div>
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-info-circle"></i>
+                    Generell info
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span class="placeholder-text">E-post for generelle henvendelser</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-facebook"></i>
+                        <span class="placeholder-text">Link til Facebook</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-instagram"></i>
+                        <span class="placeholder-text">Link til Instagram</span>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="contact-category">
-            <h2 class="category-title">
-                <i class="fas fa-map-marker-alt"></i>
-                Besøksadresse
-            </h2>
-            <ul class="contact-list">
-                <li>
-                    <i class="fas fa-building"></i>
-                    <span class="placeholder-text">Bygning/lokale</span>
-                </li>
-                <li>
-                    <i class="fas fa-location-arrow"></i>
-                    <span class="placeholder-text">Gateadresse</span>
-                </li>
-                <li>
-                    <i class="fas fa-city"></i>
-                    <span class="placeholder-text">Postnummer og sted</span>
-                </li>
-            </ul>
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Besøksadresse
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-building"></i>
+                        <span class="placeholder-text">Bygning/lokale</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-location-arrow"></i>
+                        <span class="placeholder-text">Gateadresse</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-city"></i>
+                        <span class="placeholder-text">Postnummer og sted</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
