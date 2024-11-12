@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Webshop - KØIL</title>
+    <title>Webshop - KØIL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
@@ -16,12 +16,15 @@
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
             color: #333;
-            padding-top: 140px;
+            padding-top: 60px;
+            padding-bottom: 120px;
             background-color: #f8f9fa;
+            min-height: 100vh;
+            position: relative;
+            margin-bottom: 100px;
         }
 
-        /* Navigation Styles */
-        .nav {
+        .header {
             background-color: #1a365d;
             color: white;
             position: fixed;
@@ -31,14 +34,11 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .logo-container {
             padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-main {
@@ -47,31 +47,169 @@
             letter-spacing: 0.5px;
             color: white;
             text-decoration: none;
+            display: block;
         }
 
         .logo-sub {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: rgba(255,255,255,0.8);
             display: block;
-            margin-top: 0.2rem;
             font-weight: 400;
             letter-spacing: 0.3px;
         }
 
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #718096;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            color: #1a365d;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .webshop-section {
+            max-width: 1200px;
+            margin: 2rem auto 6rem auto;
+            padding: 0 1rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-description {
+            color: #718096;
+            margin: 0.5rem 0;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin: 1rem 0;
+        }
+
+        .size-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1a365d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-weight: 500;
+        }
+
+        .buy-btn:hover {
+            background: #2d4a7c;
+        }
+
+        .nav {
+            background-color: #1a365d;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .nav-links {
             display: flex;
-            padding: 0.8rem 2rem;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
         }
 
         .nav-link {
             color: white;
             text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            padding: 0.5rem 0;
-            margin-right: 2.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem;
             position: relative;
             font-weight: 500;
+            white-space: nowrap;
+            flex: 0 1 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
         }
 
         .nav-link::after {
@@ -91,7 +229,6 @@
 
         .nav-link.active {
             color: #4299e1;
-            font-weight: 600;
         }
 
         .nav-link.active::after {
@@ -99,190 +236,51 @@
             background: #4299e1;
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* Content Styles */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border: none;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .product-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-image {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #f5f5f5;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #666;
-            cursor: pointer;
-        }
-
-        .size-select {
-            margin: 1rem 0;
-            padding: 0.5rem;
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .buy-btn {
-            background: #1a365d;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s;
-        }
-
-        .buy-btn:hover {
-            background: #2c4a7c;
-        }
-
-        .price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            color: #1a365d;
-        }
-
-        .product-description {
-            margin: 1rem 0;
-            color: #666;
-        }
-
         @media (max-width: 768px) {
             body {
-                padding-top: 100px;
-            }
-
-            .nav-container {
-                position: relative;
+                padding-top: 50px;
+                padding-bottom: 100px;
+                margin-bottom: 80px;
             }
 
             .logo-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 1.5rem;
+                padding: 0.75rem 1rem;
             }
 
-            .menu-toggle {
-                display: block;
+            .logo-main {
+                font-size: 1.25rem;
+            }
+
+            .logo-sub {
+                font-size: 0.85rem;
+            }
+
+            .webshop-section {
+                margin: 1rem auto 5rem auto;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #1a365d;
-                flex-direction: column;
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links.active {
-                display: flex;
+                padding: 0.75rem 1rem;
             }
 
             .nav-link {
-                padding: 1rem 0;
-                margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                font-size: 0.75rem;
+                padding: 0.3rem;
             }
 
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-    .main-content {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-    .section {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-    .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Justert fra 280px til 250px */
-    gap: 1.25rem;
-}
-            
-    .activity-card {
-    max-width: 100%;
-}
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .nav-link i {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo-container">
-                <a href="index.html" class="logo-main">
-                    KØIL
-                    <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
-                </a>
-                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="om-oss.html" class="nav-link">Om oss</a>
-                <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
-                <a href="galleri.html" class="nav-link">Galleri</a>
-                <a href="blimedlem.html" class="nav-link">Bli medlem</a>
-                <a href="webshop.html" class="nav-link active">Webshop</a>
-                <a href="kontaktoss.html" class="nav-link">Kontakt oss</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
+   <div class="container">
         <div class="products">
             <div class="product-card">
                 <div class="product-images">
@@ -380,11 +378,36 @@
         </div>
     </div>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-    </script>
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-links">
+                    <a href="om-oss.html" class="nav-link">
+                        <i class="far fa-building"></i>
+                        Om oss
+                    </a>
+                    <a href="aktiviteter.html" class="nav-link">
+                        <i class="far fa-calendar-alt"></i>
+                        Aktiviteter
+                    </a>
+                    <a href="galleri.html" class="nav-link">
+                        <i class="far fa-images"></i>
+                        Galleri
+                    </a>
+                    <a href="blimedlem.html" class="nav-link">
+                        <i class="far fa-handshake"></i>
+                        Bli medlem
+                    </a>
+                    <a href="webshop.html" class="nav-link active">
+                        <i class="fas fa-tshirt"></i>
+                        Webshop
+                    </a>
+                    <a href="kontaktoss.html" class="nav-link">
+                        <i class="far fa-comment-alt"></i>
+                        Kontakt oss
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
 </body>
 </html>
