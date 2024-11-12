@@ -65,12 +65,28 @@
             min-height: calc(100vh - 180px);
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #718096;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
             color: #1a365d;
-            font-size: 2rem;
-            padding-top: 1rem;
+        }
+
+        h1 {
+            color: #1a365d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
         }
 
         .contact-category {
@@ -225,11 +241,6 @@
                 font-size: 0.85rem;
             }
 
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
             .contact-category {
                 padding: 1.25rem;
                 margin-bottom: 1rem;
@@ -252,6 +263,10 @@
             .nav-link i {
                 font-size: 1rem;
             }
+
+            .back-button {
+                padding: 0.4rem 0;
+            }
         }
     </style>
 </head>
@@ -267,6 +282,11 @@
         </header>
 
         <div class="contact-section">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-chevron-left"></i>
+                Forsiden
+            </a>
+
             <h1>Kontakt oss</h1>
             
             <div class="contact-category">
