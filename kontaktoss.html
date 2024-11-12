@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="no">
 <head>
     <meta charset="UTF-8">
@@ -15,356 +16,100 @@
         body {
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
-            color: #333;
-            padding-top: 60px;
-            padding-bottom: 60px;
-            background-color: #f8f9fa;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        .header {
-            background-color: #1a365d;
-            color: white;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            padding: 1rem 2rem;
-            text-align: left;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
-
-        .logo-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.8);
-            display: block;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-        }
-
-        .main-content {
-            width: 100%;
-            max-width: 1200px;
+            max-width: 800px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        .section {
-            background: white;
-            padding: 2.5rem;
-            margin: 2rem auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            max-width: 1000px;
+        .contact-section {
+            margin-bottom: 2.5rem;
         }
 
-        .section-title {
+        h1 {
             text-align: center;
-            color: #1a365d;
-            font-size: 2rem;
             margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: #f8fafc;
-            padding: 1.75rem;
-            border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-align: center;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-        }
-
-        .contact-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
             color: #1a365d;
-            font-size: 1.25rem;
+        }
+
+        .contact-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .category-title {
+            color: #1a365d;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 2px solid #e2e8f0;
         }
 
-        .contact-info {
+        .contact-list {
             list-style: none;
-            margin: 0 auto;
-            max-width: 280px;
         }
 
-        .contact-info li {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 1rem;
-            padding: 1rem 0;
+        .contact-list li {
+            padding: 0.5rem 0;
             border-bottom: 1px solid #e2e8f0;
-            text-align: left;
         }
 
-        .contact-info li:last-child {
+        .contact-list li:last-child {
             border-bottom: none;
         }
 
-        .contact-info i {
-            color: #4299e1;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.1rem;
+        .placeholder-text {
+            color: #718096;
+            font-style: italic;
         }
 
-        .contact-info a {
-            color: #1a365d;
-            text-decoration: none;
-            transition: color 0.2s;
-            flex-grow: 1;
-            font-size: 1rem;
-        }
-
-        .contact-info a:hover {
-            color: #4299e1;
-        }
-
-        .contact-info span {
-            flex-grow: 1;
-            font-size: 1rem;
-        }
-
-        .nav {
-            background-color: #1a365d;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            flex-wrap: nowrap;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.2px;
-            padding: 0.5rem;
-            position: relative;
-            font-weight: 500;
-            white-space: nowrap;
-            flex: 0 1 auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .nav-link i {
-            font-size: 1.2rem;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: width 0.2s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link.active {
-            color: #4299e1;
-            font-weight: 600;
-        }
-
-        .nav-link.active::after {
-            width: 100%;
-            background: #4299e1;
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             body {
-                padding-top: 50px;
-                padding-bottom: 65px;
+                margin: 1rem auto;
             }
 
-            .logo-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo-main {
-                font-size: 1.25rem;
-            }
-
-            .logo-sub {
-                font-size: 0.85rem;
-            }
-
-            .section {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .contact-card {
-                padding: 1.25rem;
-            }
-
-            .nav-links {
-                padding: 0.75rem 1rem;
-            }
-
-            .nav-link {
-                font-size: 0.75rem;
-                padding: 0.3rem;
-            }
-
-            .nav-link i {
-                font-size: 1rem;
+            .contact-category {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <a href="index.html" class="logo-main">
-                KØIL
-                <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
-            </a>
+    <div class="contact-section">
+        <h1>Kontakt oss</h1>
+        
+        <div class="contact-category">
+            <h2 class="category-title">Styret</h2>
+            <ul class="contact-list">
+                <li class="placeholder-text">Navn på styreleder</li>
+                <li class="placeholder-text">E-post til styret</li>
+                <li class="placeholder-text">Telefonnummer</li>
+            </ul>
         </div>
-    </header>
 
-    <main class="main-content">
-        <section class="section">
-            <h1 class="section-title">Kontakt oss</h1>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-title">
-                        <i class="fas fa-users"></i>
-                        Styret
-                    </div>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-user"></i>
-                            <span>Ole Nordmann</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:styret@koil.no">styret@koil.no</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+4712345678">+47 123 45 678</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="contact-category">
+            <h2 class="category-title">Generell info</h2>
+            <ul class="contact-list">
+                <li class="placeholder-text">E-post for generelle henvendelser</li>
+                <li class="placeholder-text">Link til Facebook</li>
+                <li class="placeholder-text">Link til Instagram</li>
+            </ul>
+        </div>
 
-                <div class="contact-card">
-                    <div class="contact-title">
-                        <i class="fas fa-info-circle"></i>
-                        Generell info
-                    </div>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@koil.no">info@koil.no</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-facebook"></i>
-                            <a href="https://facebook.com/koil" target="_blank">KØIL på Facebook</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-instagram"></i>
-                            <a href="https://instagram.com/koil" target="_blank">KØIL på Instagram</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-title">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Besøksadresse
-                    </div>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-building"></i>
-                            <span>Klatrehallen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-location-arrow"></i>
-                            <span>Idrettsveien 123</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-city"></i>
-                            <span>1234 Østerdalen</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="contact-category">
+            <h2 class="category-title">Besøksadresse</h2>
+            <ul class="contact-list">
+                <li class="placeholder-text">Bygning/lokale</li>
+                <li class="placeholder-text">Gateadresse</li>
+                <li class="placeholder-text">Postnummer og sted</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
 
     <nav class="nav">
         <div class="nav-container">
