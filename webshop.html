@@ -280,103 +280,79 @@
     </style>
 </head>
 <body>
-   <div class="container">
-        <div class="products">
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">T-skjorte front<br>med logo</div>
-                    <div class="product-image">T-skjorte bak<br>med tekst</div>
-                </div>
-                <h3>Klubb T-skjorte</h3>
-                <p class="product-description">Økologisk bomull med klubblogo</p>
-                <p class="price">299 kr</p>
-                <select class="size-select">
-                    <option value="">Velg størrelse</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-                <button class="buy-btn">Kjøp</button>
+    <div class="content-wrapper">
+        <header class="header">
+            <div class="logo-container">
+                <a href="index.html" class="logo-main">
+                    KØIL
+                    <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
+                </a>
             </div>
+        </header>
 
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">Genser front<br>med logo</div>
-                    <div class="product-image">Genser bak<br>med tekst</div>
-                </div>
-                <h3>Klubbgenser</h3>
-                <p class="product-description">College-genser med brodert logo</p>
-                <p class="price">499 kr</p>
-                <select class="size-select">
-                    <option value="">Velg størrelse</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-                <button class="buy-btn">Kjøp</button>
-            </div>
+        <div class="webshop-section">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-chevron-left"></i>
+                Forsiden
+            </a>
 
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">Shorts front<br>med logo</div>
-                    <div class="product-image">Shorts side<br>med lomme</div>
-                </div>
-                <h3>Klatreshorts</h3>
-                <p class="product-description">Slitesterk shorts</p>
-                <p class="price">399 kr</p>
-                <select class="size-select">
-                    <option value="">Velg størrelse</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-                <button class="buy-btn">Kjøp</button>
-            </div>
+            <h1>Webshop</h1>
+            
+   {
+      id: 1,
+      name: "Klubb T-skjorte",
+      description: "Økologisk bomull med klubblogo",
+      price: "299 kr",
+      images: ["T-skjorte front med logo", "T-skjorte bak med tekst"],
+      sizes: ["S", "M", "L", "XL"]
+    },
+    {
+      id: 2,
+      name: "Klubbgenser",
+      description: "College-genser med brodert logo",
+      price: "499 kr",
+      images: ["Genser front med logo", "Genser bak med tekst"],
+      sizes: ["S", "M", "L", "XL"]
+    },
+    {
+      id: 3,
+      name: "Klatreshorts",
+      description: "Slitesterk shorts",
+      price: "399 kr",
+      images: ["Shorts front med logo", "Shorts side med lomme"],
+      sizes: ["S", "M", "L", "XL"]
+    },
+    {
+      id: 4,
+      name: "Klubbpatches",
+      description: "Broderte patches med klubblogo",
+      price: "79 kr",
+      images: ["Patch front", "Patch på plagg"],
+      sizes: ["5 cm", "8 cm", "15 cm", "30 cm"]
+    },
+    {
+      id: 5,
+      name: "Kalkpose",
+      description: "Pose med brodert mønster",
+      price: "249 kr",
+      images: ["Kalkpose front", "Kalkpose side"],
+      sizes: []
+    },
+    {
+      id: 6,
+      name: "Kaffekopp",
+      description: "Kopp av rikule fra bjørk",
+      price: "199 kr",
+      images: ["Termos 1 front", "Termos 1 i bruk"],
+      sizes: []
+    }
+  ];
 
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">Patch front</div>
-                    <div class="product-image">Patch på plagg</div>
-                </div>
-                <h3>Klubbpatches</h3>
-                <p class="product-description">Broderte patches med klubblogo</p>
-                <p class="price">79 kr</p>
-                <select class="size-select">
-                    <option value="">Velg størrelse</option>
-                    <option value="5 cm">5 cm</option>
-                    <option value="8 cm">8 cm</option>
-                    <option value="15 cm">15 cm</option>
-                    <option value="30 cm">30 cm</option>
-                </select>
-                <button class="buy-btn">Kjøp</button>
-            </div>
+                <!-- Gjenta product-card for andre produkter -->
+                <!-- [Resten av produktkortene kopieres inn her] -->
 
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">Kalkpose front</div>
-                    <div class="product-image">Kalkpose side</div>
-                </div>
-                <h3>Kalkpose</h3>
-                <p class="product-description">Pose med brodert mønster</p>
-                <p class="price">249 kr</p>
-                <button class="buy-btn">Kjøp</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-images">
-                    <div class="product-image">Termos 1 front</div>
-                    <div class="product-image">Termos 1 i bruk</div>
-                </div>
-                <h3>Kaffekopp</h3>
-                <p class="product-description">Kopp av rikule fra bjørk</p>
-                <p class="price">199 kr</p>
-                <button class="buy-btn">Kjøp</button>
             </div>
         </div>
-    </div>
 
         <nav class="nav">
             <div class="nav-container">
