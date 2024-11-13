@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Om oss - KØIL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --bg-gradient: linear-gradient(145deg, #1a1f25 0%, #232830 100%);
+            --nav-bg: rgba(28, 32, 38, 0.95);
+            --primary: #3494e6;
+            --accent: #ec6ead;
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --dropdown-bg: rgba(28, 32, 38, 0.85);
+            --blur-strength: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --card-bg: rgba(28, 32, 38, 0.85);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,63 +28,80 @@
         body {
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-primary);
+            background: var(--bg-gradient);
+            min-height: 100vh;
             padding-top: 140px;
-            background-color: #f8f9fa;
         }
 
-        /* Navigation Styles */
+        /* Navigasjon styling */
         .nav {
-            background-color: #1a365d;
-            color: white;
+            background: var(--nav-bg);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            backdrop-filter: blur(var(--blur-strength));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                       0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding-left: 2rem;
         }
 
         .logo-container {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-main {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: white;
             text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .logo-main .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo-sub {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            display: block;
-            margin-top: 0.2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             font-weight: 400;
-            letter-spacing: 0.3px;
         }
 
         .nav-links {
             display: flex;
-            padding: 0.8rem 2rem;
+            padding: 0.75rem 0;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-link {
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            padding: 0.5rem 0;
-            margin-right: 2.5rem;
-            position: relative;
             font-weight: 500;
+            padding: 0.5rem 0;
+            display: block;
+            transition: var(--transition);
+            position: relative;
         }
 
         .nav-link::after {
@@ -80,166 +111,284 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: white;
-            transition: width 0.2s ease;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            transition: var(--transition);
+            opacity: 0;
         }
 
         .nav-link:hover::after {
             width: 100%;
+            opacity: 1;
         }
 
-        .nav-link.active {
-            color: #4299e1;
-            font-weight: 600;
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--dropdown-bg);
+            min-width: 240px;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-strength));
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                       0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        .nav-link.active::after {
-            width: 100%;
-            background: #4299e1;
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
         }
 
-        /* Main Content Styles */
+        .dropdown-item:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        /* Hovedinnhold styling */
         .main-content {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Diskret tilbakeknapp */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+
+        .back-button:hover {
+            color: var(--text-primary);
+            opacity: 1;
+            transform: translateX(-3px);
+        }
+
+        .back-button i {
+            font-size: 0.8rem;
         }
 
         .section {
-            background: white;
+            margin-bottom: 3rem;
             padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
         }
 
-        h2 {
-            color: #2c5282;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
 
         .highlight-box {
-            background: #1a365d;
-            color: white;
+            background: linear-gradient(145deg, var(--primary), var(--accent));
             padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
         }
 
         .highlight-box h2 {
-            color: white;
             margin-bottom: 1rem;
+            font-size: 2rem;
         }
 
         .values-list {
             list-style: none;
-            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .values-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .values-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
         }
 
         .values-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #4299e1;
+            content: '→';
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .contact-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .contact-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-list li i {
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-list li:hover {
+            padding-left: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
             body {
-                padding-top: 100px;
+                padding-top: 120px;
+            }
+            
+            .main-content {
+                padding: 1rem;
             }
 
             .nav-container {
-                position: relative;
-            }
-
-            .logo-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 1.5rem;
-            }
-
-            .menu-toggle {
-                display: block;
+                padding-left: 1rem;
             }
 
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #1a365d;
-                flex-direction: column;
-                padding: 1rem 1.5rem;
+                padding: 0.5rem 0;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
 
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-link {
-                padding: 1rem 0;
-                margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-
-            .contact-grid {
+            .contact-section {
                 grid-template-columns: 1fr;
+            }
+
+            .values-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-container {
+                padding-left: 0.75rem;
+            }
+
+            .logo-main .title {
+                font-size: 1.25rem;
+            }
+
+            .logo-sub {
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" role="navigation">
         <div class="nav-container">
             <div class="logo-container">
                 <a href="index.html" class="logo-main">
-                    KØIL
+                    <span class="title">KØIL</span>
                     <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
                 </a>
-                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="om-oss.html" class="nav-link active">Om oss</a>
-                <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
-                <a href="galleri.html" class="nav-link">Galleri</a>
-                <a href="blimedlem.html" class="nav-link">Bli medlem</a>
-                <a href="webshop.html" class="nav-link">Webshop</a>
-                <a href="kontaktoss.html" class="nav-link">Kontakt oss</a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="om-oss.html" class="nav-link">Om oss</a>
+                </div>
+                <div class="nav-item">
+                    <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
+                </div>
+                <div class="nav-item">
+                    <a href="galleri.html" class="nav-link">Galleri</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Medlemskap</a>
+                    <div class="dropdown">
+                        <a href="bli-medlem.html" class="dropdown-item">Bli medlem</a>
+                        <a href="fasiliteter.html" class="dropdown-item">Våre fasiliteter</a>
+                        <a href="tilbud.html" class="dropdown-item">Dette kan vi tilby deg</a>
+                        <a href="webshop.html" class="dropdown-item">Webshop</a>
+                        <a href="regler.html" class="dropdown-item">Regler og retningslinjer</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <main class="main-content">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+            Tilbake til forsiden
+        </a>
+
         <section class="section">
             <h2>Vår historie</h2>
             <p>Østerdølenes Klatreklubb er en del av Østerdølenes idrettslag i Oslo, og ble startet av en gruppe klatreentusiaster med røtter fra Østerdalen som ønsket å skape et fellesskap rundt klatring og fjellliv i Oslo og omeng. Restauranten Grisen fungerer som klubbens uformelle klubbhus og samlingspunkt.</p>
@@ -264,21 +413,71 @@
             <h2>Aktiviteter</h2>
             <p>Vi arrangerer ukentlig innendørs klatring, helgeturer, toppturer på ski og sosiale sammenkomster. Vårt mål er å tilby aktiviteter for alle nivåer og interesser.</p>
         </section>
+
+         <div class="contact-section">
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-users"></i>
+                    Styret
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-user"></i>
+                        <span class="placeholder-text">Navn på styreleder</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span class="placeholder-text">E-post til styret</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span class="placeholder-text">Telefonnummer</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-info-circle"></i>
+                    Generell info
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span class="placeholder-text">E-post for generelle henvendelser</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-facebook"></i>
+                        <span class="placeholder-text">Link til Facebook</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-instagram"></i>
+                        <span class="placeholder-text">Link til Instagram</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact-category">
+                <h2 class="category-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Besøksadresse
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-building"></i>
+                        <span class="placeholder-text">Bygning/lokale</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-location-arrow"></i>
+                        <span class="placeholder-text">Gateadresse</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-city"></i>
+                        <span class="placeholder-text">Postnummer og sted</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </main>
-
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
