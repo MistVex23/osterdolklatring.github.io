@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KØIL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --bg-gradient: linear-gradient(145deg, #1a1f25 0%, #232830 100%);
+            --nav-bg: rgba(28, 32, 38, 0.95);
+            --primary: #3494e6;
+            --accent: #ec6ead;
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --dropdown-bg: rgba(28, 32, 38, 0.85);
+            --blur-strength: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --card-bg: rgba(28, 32, 38, 0.85);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,62 +28,80 @@
         body {
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
-            color: #333;
-            padding-top: 90px;
+            color: var(--text-primary);
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            padding-top: 140px;
         }
 
-        /* Navigation Styles */
+        /* Navigation Styling */
         .nav {
-            background-color: #1a365d;
-            color: white;
+            background: var(--nav-bg);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            backdrop-filter: blur(var(--blur-strength));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                       0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding-left: 2rem;
         }
 
         .logo-container {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-main {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: white;
             text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .logo-main .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo-sub {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            display: block;
-            margin-top: 0.2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             font-weight: 400;
-            letter-spacing: 0.3px;
         }
 
         .nav-links {
             display: flex;
-            padding: 0.8rem 2rem;
+            padding: 0.75rem 0;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-link {
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            padding: 0.5rem 0;
-            margin-right: 2.5rem;
-            position: relative;
             font-weight: 500;
+            padding: 0.5rem 0;
+            display: block;
+            transition: var(--transition);
+            position: relative;
         }
 
         .nav-link::after {
@@ -79,32 +111,103 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: white;
-            transition: width 0.2s ease;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            transition: var(--transition);
+            opacity: 0;
         }
 
         .nav-link:hover::after {
             width: 100%;
+            opacity: 1;
         }
 
-        .nav-link.active {
-            color: #4299e1;
-            font-weight: 600;
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--dropdown-bg);
+            min-width: 240px;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-strength));
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                       0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        .nav-link.active::after {
-            width: 100%;
-            background: #4299e1;
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        /* Main content styling */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-bottom: 4rem;
+            min-height: calc(100vh - 140px);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 240px);
+        }
+
+        /* Hero Background Animation */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                var(--primary),
+                var(--accent)
+            );
+            opacity: 0.1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Chatbot Styles */
@@ -116,8 +219,8 @@
         }
 
         .chat-button {
-            background: #1a365d;
-            color: white;
+            background: var(--nav-bg);
+            color: var(--text-primary);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -127,12 +230,12 @@
             cursor: pointer;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .chat-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         .status-dot {
@@ -143,17 +246,18 @@
             height: 8px;
             background: #48bb78;
             border-radius: 50%;
-            border: 2px solid #1a365d;
+            border: 2px solid var(--nav-bg);
         }
 
         .chat-label {
             position: absolute;
             bottom: 70px;
             right: 0;
-            background: white;
+            background: var(--card-bg);
+            color: var(--text-primary);
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             white-space: nowrap;
             opacity: 0;
             transform: translateY(10px);
@@ -170,7 +274,8 @@
             position: absolute;
             bottom: 80px;
             right: 0;
-            background: white;
+            background: var(--card-bg);
+            color: var(--text-primary);
             padding: 1rem;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -179,36 +284,13 @@
             transform-origin: bottom right;
         }
 
-        .welcome-popup::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 24px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid white;
-        }
-
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
         .chat-window {
             position: absolute;
             bottom: 80px;
             right: 0;
             width: 300px;
             height: 400px;
-            background: white;
+            background: var(--card-bg);
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             display: none;
@@ -221,8 +303,8 @@
         }
 
         .chat-header {
-            background: #1a365d;
-            color: white;
+            background: var(--nav-bg);
+            color: var(--text-primary);
             padding: 1rem;
             display: flex;
             align-items: center;
@@ -236,7 +318,7 @@
         }
 
         .chat-input {
-            border-top: 1px solid #eee;
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding: 1rem;
             display: flex;
             gap: 0.5rem;
@@ -245,18 +327,26 @@
         .chat-input input {
             flex: 1;
             padding: 0.5rem;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
             outline: none;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
         }
 
         .chat-input button {
-            background: #1a365d;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             color: white;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chat-input button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .message {
@@ -280,89 +370,90 @@
         }
 
         .message.bot .message-content {
-            background: #f0f0f0;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
         }
 
         .message.user .message-content {
-            background: #1a365d;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             color: white;
         }
 
         @media (max-width: 768px) {
             body {
-                padding-top: 100px;
+                padding-top: 120px;
+            }
+            
+            .main-content {
+                padding: 1rem;
+                padding-bottom: 4rem;
+                min-height: calc(100vh - 120px);
             }
 
             .nav-container {
-                position: relative;
-            }
-
-            .logo-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 1.5rem;
-            }
-
-            .menu-toggle {
-                display: block;
+                padding-left: 1rem;
             }
 
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: #1a365d;
-                flex-direction: column;
-                padding: 1rem 1.5rem;
+                padding: 0.5rem 0;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-container {
+                padding-left: 0.75rem;
             }
 
-            .nav-links.active {
-                display: flex;
+            .logo-main .title {
+                font-size: 1.25rem;
             }
 
-            .nav-link {
-                padding: 1rem 0;
-                margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .logo-sub {
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" role="navigation">
         <div class="nav-container">
             <div class="logo-container">
                 <a href="index.html" class="logo-main">
-                    KØIL
+                    <span class="title">KØIL</span>
                     <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
                 </a>
-                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="om-oss.html" class="nav-link">Om oss</a>
-                <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
-                <a href="galleri.html" class="nav-link">Galleri</a>
-                <a href="blimedlem.html" class="nav-link">Bli medlem</a>
-                <a href="webshop.html" class="nav-link">Webshop</a>
-                <a href="kontaktoss.html" class="nav-link">Kontakt oss</a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="om-oss.html" class="nav-link">Om oss</a>
+                </div>
+                <div class="nav-item">
+                    <a href="aktiviteter.html" class="nav-link">Aktiviteter</a>
+                </div>
+                <div class="nav-item">
+                    <a href="galleri.html" class="nav-link">Galleri</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Medlemskap</a>
+                    <div class="dropdown">
+                        <a href="bli-medlem.html" class="dropdown-item">Bli medlem</a>
+                        <a href="fasiliteter.html" class="dropdown-item">Våre fasiliteter</a>
+                        <a href="tilbud.html" class="dropdown-item">Dette kan vi tilby deg</a>
+                        <a href="webshop.html" class="dropdown-item">Webshop</a>
+                        <a href="regler.html" class="dropdown-item">Regler og retningslinjer</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
+    <main class="main-content">
+        <section class="section">
+            <div class="hero-background"></div>
+        </section>
+    </main>
 
     <div class="chatbot-container">
         <div class="chat-button" onclick="toggleChat()">
@@ -379,84 +470,3 @@
             <div class="chat-header">
                 <div class="status-dot"></div>
                 Tinda
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    <div class="message-content">
-                        Hei! Hva kan jeg hjelpe deg med? 🧗‍♀️
-                    </div>
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Skriv en melding..." onkeypress="handleKeyPress(event)">
-                <button onclick="sendMessage()">Send</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Navigation menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
-        });
-
-        // Chatbot functionality
-        setTimeout(() => {
-            const popup = document.getElementById('welcomePopup');
-            if (popup) {
-                popup.style.opacity = '0';
-                setTimeout(() => popup.remove(), 300);
-            }
-        }, 5000);
-
-        function toggleChat() {
-            const chatWindow = document.getElementById('chatWindow');
-            chatWindow.classList.toggle('active');
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function sendMessage() {
-            const input = document.querySelector('.chat-input input');
-            const message = input.value.trim();
-            
-            if (message) {
-                const messages = document.getElementById('chatMessages');
-                
-                messages.innerHTML += `
-                    <div class="message user">
-                        <div class="message-content">${message}</div>
-                    </div>
-                `;
-                
-                setTimeout(() => {
-                    messages.innerHTML += `
-                        <div class="message bot">
-                            <div class="message-content">
-                                Takk for meldingen! Jeg jobber med å finne et godt svar til deg 🤔
-                            </div>
-                        </div>
-                    `;
-                    messages.scrollTop = messages.scrollHeight;
-                }, 1000);
-                
-                input.value = '';
-                messages.scrollTop = messages.scrollHeight;
-            }
-        }
-    </script>
-</body>
-</html>
