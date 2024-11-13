@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medlemskap - KØIL</title>
+    <title>KØIL - Modern Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset og base styles */
+        :root {
+            --bg-gradient: linear-gradient(145deg, #1a1f25 0%, #232830 100%);
+            --nav-bg: rgba(28, 32, 38, 0.95);
+            --primary: #3494e6;
+            --accent: #ec6ead;
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --dropdown-bg: rgba(28, 32, 38, 0.85);
+            --blur-strength: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,65 +27,74 @@
         body {
             font-family: -apple-system, system-ui, sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background-color: #1E1E1E;
+            color: var(--text-primary);
+            background: var(--bg-gradient);
             min-height: 100vh;
         }
 
-        /* Header og hovednavigasjon */
         .nav {
-            background-color: #333333;
+            background: var(--nav-bg);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 255, 157, 0.1);
+            backdrop-filter: blur(var(--blur-strength));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding-left: 2rem;
         }
 
-        /* Oppdatert kompakt logo-container */
         .logo-container {
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Oppdatert logo styling */
         .logo-main {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s ease;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .logo-main:hover {
-            color: #00FF9D;
+        .logo-main .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
         }
 
         .logo-sub {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            display: inline-block;
-            margin-left: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             font-weight: 400;
-            letter-spacing: 0.3px;
+            transition: var(--transition);
         }
 
-        /* Oppdatert hovedmeny */
+        .logo-main:hover .title {
+            text-shadow: 0 0 20px rgba(52, 148, 230, 0.5);
+        }
+
+        .logo-main:hover .logo-sub {
+            color: var(--text-primary);
+        }
+
         .nav-links {
             display: flex;
-            padding: 0.4rem 1rem;
-            position: relative;
+            padding: 0.75rem 0;
+            gap: 2rem;
             align-items: center;
         }
 
@@ -83,32 +103,54 @@
         }
 
         .nav-link {
-            color: #ffffff;
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.3rem 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
             display: block;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            transition: var(--transition);
+            opacity: 0;
         }
 
         .nav-link:hover {
-            color: #00FF9D;
+            color: var(--primary);
         }
 
-        /* Dropdown styling */
+        .nav-link:hover::after {
+            width: 100%;
+            opacity: 1;
+        }
+
         .dropdown {
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #333333;
-            min-width: 220px;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background: var(--dropdown-bg);
+            min-width: 240px;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-strength));
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
         }
 
         .nav-item:hover .dropdown {
@@ -119,116 +161,77 @@
 
         .dropdown-item {
             display: block;
-            padding: 0.6rem 1rem;
-            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
-            font-size: 0.85rem;
+            border-left: 3px solid transparent;
         }
 
-        .dropdown-item:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background-color: #00FF9D;
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
+        .dropdown-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .dropdown-item:hover {
-            background-color: #2a2a2a;
-            padding-left: 1.2rem;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            padding-left: 1.5rem;
         }
 
-        .dropdown-item:hover:before {
-            transform: scaleY(1);
+        /* Fokustilstander */
+        .nav-link:focus,
+        .dropdown-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary);
+            border-radius: 4px;
         }
 
-        /* Hovedinnhold */
-        .main-content {
-            max-width: 1200px;
-            margin: 80px auto 0;
-            padding: 1rem;
-        }
-
-        /* Responsive design */
         @media (max-width: 768px) {
+            .nav-container {
+                padding-left: 1rem;
+            }
+
             .logo-container {
-                padding: 0.4rem 0.8rem;
-            }
-
-            .logo-main {
-                font-size: 1.1rem;
-            }
-
-            .logo-sub {
-                font-size: 0.75rem;
-                max-width: 150px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                padding: 0.75rem 0;
             }
 
             .nav-links {
-                padding: 0.3rem;
-                justify-content: space-between;
+                padding: 0.5rem 0;
+                gap: 1rem;
                 flex-wrap: wrap;
-                gap: 0.2rem;
-            }
-
-            .nav-link {
-                padding: 0.3rem 0.5rem;
-                font-size: 0.85rem;
             }
 
             .dropdown {
                 right: 0;
                 left: auto;
-                width: 180px;
-            }
-
-            .dropdown-item {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .nav-item.active .dropdown {
-                display: block;
             }
         }
 
-        /* Ekstra liten skjerm */
         @media (max-width: 380px) {
-            .logo-sub {
-                display: none;
+            .nav-container {
+                padding-left: 0.75rem;
             }
 
-            .nav-link {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.8rem;
+            .logo-main .title {
+                font-size: 1.25rem;
             }
-            
-            .dropdown {
-                width: 160px;
+
+            .logo-sub {
+                font-size: 0.75rem;
             }
         }
-    </style>
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" role="navigation">
         <div class="nav-container">
             <div class="logo-container">
                 <a href="index.html" class="logo-main">
-                    KØIL
+                    <span class="title">KØIL</span>
                     <span class="logo-sub">Klatregruppa i Østerdølenes Idrettslag</span>
                 </a>
-                <button class="menu-toggle" onclick="toggleMenu()">≡</button>
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -241,7 +244,7 @@
                     <a href="galleri.html" class="nav-link">Galleri</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="nav-link" onclick="return false;">Medlemskap</a>
+                    <a href="#" class="nav-link">Medlemskap</a>
                     <div class="dropdown">
                         <a href="bli-medlem.html" class="dropdown-item">Bli medlem</a>
                         <a href="fasiliteter.html" class="dropdown-item">Våre fasiliteter</a>
@@ -253,35 +256,5 @@
             </div>
         </div>
     </nav>
-
-    <main class="main-content">
-        <!-- Tom main-seksjon -->
-    </main>
-
-    <script>
-        // Mobile menu handling
-        if (window.innerWidth <= 768) {
-            const membershipLink = document.querySelector('.nav-item:last-child .nav-link');
-            
-            membershipLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parentItem = e.target.closest('.nav-item');
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    if (item !== parentItem) {
-                        item.classList.remove('active');
-                    }
-                });
-                parentItem.classList.toggle('active');
-            });
-        }
-
-        document.querySelectorAll('.dropdown-item').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    link.closest('.nav-item').classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
